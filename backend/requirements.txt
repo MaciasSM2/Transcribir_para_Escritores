@@ -1,0 +1,14 @@
+fastapi==0.115.5
+uvicorn==0.32.1
+pydantic==2.10.3
+python-multipart==0.0.20
+SQLAlchemy==2.0.36
+vosk==0.3.45
+spacy==3.8.3
+# Análisis estilométrico — Motor Zero-IA (Fase 2)
+textstat==0.7.3      # Índices de legibilidad: Flesch + Fernández-Huerta en español
+pyphen==0.14.0       # Conteo silábico para análisis rítmico
+pysbd==0.3.4         # Segmentación de frases respetando abreviaturas (Sr., Dr., etc.)
+# NOTA: FFmpeg debe instalarse a nivel de sistema (no via pip)
+# Windows: winget install Gyan.FFmpeg
+# Linux/Mac: sudo apt install ffmpeg / brew install ffmpeg

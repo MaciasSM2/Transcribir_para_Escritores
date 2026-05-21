@@ -5,7 +5,14 @@ from typing import Optional
 
 logger = logging.getLogger("gema-nlp")
 
-class StyleProcessor:
+# Alias para retrocompatibilidad — el motor activo es FakeAIRulesEngine (Fase 3)
+# Solo se usa como fallback si StyleProfile no existe en DB para el tono.
+class StyleProcessorLegacy:
+    """
+    Procesador heurístico legacy de estilo.
+    Mantenido como fallback cuando no existe StyleProfile en la DB.
+    No usar para tonos con perfil completo — usar FakeAIRulesEngine.
+    """
     def __init__(self):
         try:
             self.nlp = spacy.load("es_core_news_sm")
@@ -23,6 +30,8 @@ class StyleProcessor:
         # 1. Corrección básica de espacios y mayúsculas
         corrected_text = re.sub(r'\s+([.,;:?!])', r'\1', corrected_text) # Eliminar espacios antes de puntuación
         
+        # M2: Capitalizar cada oración
+        corrected_text = re.sub(r'(?<=[.!?])\s*\w', lambda m: m.group(0).upper(), corrected_text)
         if len(corrected_text) > 0:
             corrected_text = corrected_text[0].upper() + corrected_text[1:]
 

@@ -6,12 +6,14 @@ import os
 import uuid
 import datetime
 import logging
+import json
 
 import models
 from database import engine, SessionLocal
-from nlp_processor import StyleProcessor
+from nlp_processor import StyleProcessorLegacy
 from services.transcription_service import TranscriptionService
 from services.style_analyzer import StyleAnalyzer
+from services.style_expert_engine import FakeAIRulesEngine
 from schemas import ProcessTextRequest, ToneRequest, SaveDocumentRequest
 
 # Configuración de Logging
@@ -26,7 +28,8 @@ logger = logging.getLogger("gema-backend")
 models.Base.metadata.create_all(bind=engine)
 
 # Inicializar Servicios
-style_processor = StyleProcessor()
+style_processor_legacy = StyleProcessorLegacy()  # Fallback para tonos sin StyleProfile
+fake_ai_engine = FakeAIRulesEngine()              # Motor activo (Fase 3)
 transcription_service = TranscriptionService("model_es")
 style_analyzer = StyleAnalyzer()
 
@@ -189,14 +192,84 @@ def get_transcription_status(job_id: str, db: Session = Depends(get_db)) -> dict
     }
 
 @app.post("/api/process-text")
-async def process_text(request: ProcessTextRequest, db: Session = Depends(get_db)) -> dict:
-    tone_settings = db.query(models.ToneSettings).filter(models.ToneSettings.tone_name == request.tone_name).first()
-    reference_text = tone_settings.reference_text if tone_settings else ""
+def process_text(request: ProcessTextRequest, db: Session = Depends(get_db)) -> dict:
+    """
+    Motor activo: FakeAIRulesEngine (Fase 3).
+    Fallback: StyleProcessorLegacy si no existe StyleProfile en DB para el tono.
+    Responde con EngineResponse (backward-compatible: siempre incluye corrected_text).
+    """
+    # ── Cargar StyleProfile del tono ────────────────────────────────────────
+    profile_row = db.query(models.StyleProfile).filter(
+        models.StyleProfile.tone_name == request.tone_name
+    ).first()
 
-    # NLP Heurístico (legacy — se reemplaza en Fase 3 por FakeAIRulesEngine)
-    corrected_text = style_processor.process_text(request.raw_text, request.tone_name, reference_text)
+    # ── Fallback legacy si no hay perfil en DB ──────────────────────────────
+    if not profile_row:
+        logger.info(f"[process-text] Sin StyleProfile para '{request.tone_name}' — usando fallback legacy.")
+        tone_settings = db.query(models.ToneSettings).filter(
+            models.ToneSettings.tone_name == request.tone_name
+        ).first()
+        reference_text = tone_settings.reference_text if tone_settings else ""
+        corrected_text = style_processor_legacy.process_text(
+            request.raw_text, request.tone_name, reference_text
+        )
+        return {"corrected_text": corrected_text, "suggestions": [], "alerts": [], "style_report": {}}
 
-    return {"corrected_text": corrected_text}
+    # ── Motor experto: cargar tesauro y palabras prohibidas ─────────────────
+    profile_dict = {
+        "avg_sentence_len":    profile_row.avg_sentence_len,
+        "max_sentence_len":    profile_row.max_sentence_len,
+        "ttr_target":          profile_row.ttr_target,
+        "adjective_density":   profile_row.adjective_density,
+        "flesch_target":       profile_row.flesch_target,
+        "short_sentence_ratio": profile_row.short_sentence_ratio,
+        "reference_author":    profile_row.reference_author,
+        "style_display_name":  profile_row.style_display_name,
+        "forbidden_words":     profile_row.forbidden_words,
+        "preferred_structures": profile_row.preferred_structures,
+        "compound_replacements": profile_row.compound_replacements,
+    }
+
+    thesaurus_rows = db.query(models.LiteraryThesaurus).filter(
+        models.LiteraryThesaurus.tone_name == request.tone_name
+    ).order_by(models.LiteraryThesaurus.priority.desc()).all()
+
+    thesaurus_entries = [
+        {
+            "source_lemma": row.source_lemma,
+            "target_word":  row.target_word,
+            "pos_tag":      row.pos_tag,
+            "intensity":    row.intensity,
+            "context_hint": row.context_hint,
+            "priority":     row.priority,
+        }
+        for row in thesaurus_rows
+    ]
+
+    prohibited_rows = db.query(models.ProhibitedWord).filter(
+        models.ProhibitedWord.tone_name == request.tone_name
+    ).all()
+
+    prohibited_words = [
+        {"word": row.word, "reason": row.reason, "suggestion": row.suggestion}
+        for row in prohibited_rows
+    ]
+
+    # ── Ejecutar motor ───────────────────────────────────────────────────────
+    result = fake_ai_engine.analyze_and_fix(
+        text=request.raw_text,
+        tone_name=request.tone_name,
+        style_profile=profile_dict,
+        thesaurus_entries=thesaurus_entries,
+        prohibited_words=prohibited_words,
+    )
+
+    return {
+        "corrected_text": result.corrected_text,
+        "suggestions":    [vars(s) for s in result.suggestions],
+        "alerts":         [vars(a) for a in result.alerts],
+        "style_report":   result.style_report,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -264,7 +337,7 @@ def engine_status(db: Session = Depends(get_db)) -> dict:
 
     return {
         "engine_version": "2.0-stylometric",
-        "engine_mode": "legacy-heuristic",  # cambia a 'expert' en Fase 3
+        "engine_mode": "expert-rules",  # FakeAIRulesEngine activo (Fase 3)
         "profiles_loaded": [
             {
                 "tone_name": p.tone_name,

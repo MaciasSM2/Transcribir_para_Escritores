@@ -7,7 +7,7 @@ import logging
 try:
     from vosk import Model, KaldiRecognizer
 except ImportError:
-    pass
+    raise ImportError('Vosk no está instalado. Ejecuta: pip install vosk')
 
 logger = logging.getLogger("gema-worker")
 _global_vosk_model = None

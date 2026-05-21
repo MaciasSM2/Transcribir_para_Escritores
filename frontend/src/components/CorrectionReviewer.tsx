@@ -10,6 +10,7 @@ import { useToneStore } from '@/store/useToneStore';
 import { useUIStore } from '@/store/useUIStore';
 import { exportService, ExportFormat } from '@/infrastructure/export/ExportService';
 import { API_BASE } from '@/lib/api';
+import StyleReportPanel from '@/components/StyleReportPanel';
 
 // ─── Tipos ──────────────────────────────────────────────────────────────────
 
@@ -79,6 +80,12 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
+  // ── Estado del Motor Estilométrico (Fase 3/4) ──────────────────────────
+  const [styleReport, setStyleReport] = useState<Record<string, any>>({});
+  const [styleAlerts, setStyleAlerts] = useState<any[]>([]);
+  const [styleSuggestions, setStyleSuggestions] = useState<any[]>([]);
+  const [progressMsg, setProgressMsg] = useState<string>('');
+
   const { setDocumentText } = useDictationStore();
   const { setCurrentView } = useUIStore();
   const exportRef = useRef<HTMLDivElement>(null);
@@ -145,24 +152,62 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
 
   // ── Handlers ──────────────────────────────────────────────────────────────
 
+  // ── Mensajes de simulación de capas ──────────────────────────────────────
+  const LAYER_MESSAGES = [
+    { ms: 0,    text: 'Analizando estructura morfológica...' },
+    { ms: 500,  text: 'Calculando cadencia de párrafos...' },
+    { ms: 1000, text: 'Consultando tesauro de época...' },
+    { ms: 1500, text: 'Optimizando densidad de adjetivos...' },
+    { ms: 2000, text: 'Generando informe de estilo...' },
+  ] as const;
+
   const handleProcess = async () => {
     if (!rawText) return;
     setIsLoading(true);
-    try {
-      const response = await fetch(`${API_BASE}/api/process-text`, {
+    setProgressMsg(LAYER_MESSAGES[0].text);
+
+    // Lanzar mensajes de progreso en paralelo con la request
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    LAYER_MESSAGES.slice(1).forEach(({ ms, text }) => {
+      timers.push(setTimeout(() => setProgressMsg(text), ms));
+    });
+
+    // Mínimo visual de 2 s para que se vean todos los mensajes
+    const [response] = await Promise.all([
+      fetch(`${API_BASE}/api/process-text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           raw_text: rawText,
           tone_name: toneName || 'Narrativa de Ciencia Ficción y Fantasía Épica',
         }),
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      }).catch((e) => { console.error('[handleProcess]', e); return null; }),
+      new Promise<void>((res) => setTimeout(res, 2100)), // esperar al último mensaje
+    ]);
+
+    // Limpiar timers pendientes
+    timers.forEach(clearTimeout);
+    setProgressMsg('');
+
+    if (!response) {
+      setToast('Error al conectar con el backend. ¿Está corriendo uvicorn?');
+      setIsLoading(false);
+      return;
+    }
+    if (!response.ok) {
+      setToast(`Error HTTP ${response.status}`);
+      setIsLoading(false);
+      return;
+    }
+
+    try {
       const data = await response.json();
       setCorrectedText(data.corrected_text);
+      setStyleReport(data.style_report ?? {});
+      setStyleAlerts(data.alerts ?? []);
+      setStyleSuggestions(data.suggestions ?? []);
     } catch (e) {
-      console.error('[handleProcess]', e);
-      setToast('Error al conectar con el backend. ¿Está corriendo uvicorn?');
+      setToast('Error al parsear la respuesta del backend.');
     } finally {
       setIsLoading(false);
     }
@@ -274,7 +319,7 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
               className="flex items-center gap-2 px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium disabled:opacity-50 shadow-sm text-sm"
             >
               {isLoading ? (
-                <><Loader2 size={16} className="animate-spin" /> Analizando...</>
+                <><Loader2 size={16} className="animate-spin" /> {progressMsg || 'Analizando...'}</>
               ) : (
                 <><Sparkles size={16} /> Aplicar Estilo Literario</>
               )}
@@ -337,6 +382,7 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
             </div>
           ) : (
           // Vista Track Changes — documento unificado centrado
+          <>
           <div className="flex justify-center w-full">
             <div
               className="w-full max-w-3xl bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-[0_4px_40px_rgba(0,0,0,0.10)] dark:shadow-[0_4px_40px_rgba(0,0,0,0.4)] border border-slate-100 dark:border-slate-800 px-12 py-14 min-h-[60vh] font-serif"
@@ -438,6 +484,15 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
               </div>
             </div>
           </div>
+          {/* ── Panel de diagnóstico estilométrico ── */}
+          <div className="w-full max-w-3xl mx-auto px-4">
+            <StyleReportPanel
+              styleReport={styleReport}
+              alerts={styleAlerts}
+              suggestions={styleSuggestions}
+            />
+          </div>
+          </>
           )
         ) : (
           // Estado inicial — sin texto procesado todavía
@@ -459,7 +514,7 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
                 className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl transition-colors font-medium disabled:opacity-50 shadow-md"
               >
                 {isLoading ? (
-                  <><Loader2 size={18} className="animate-spin" /> Analizando texto...</>
+                  <><Loader2 size={18} className="animate-spin" /> {progressMsg || 'Analizando texto...'}</>
                 ) : (
                   <><Sparkles size={18} /> Aplicar Estilo Literario</>
                 )}

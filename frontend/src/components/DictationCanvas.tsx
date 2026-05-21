@@ -26,19 +26,28 @@ export default function DictationCanvas() {
       const el = textareaRef.current;
       const start = el.selectionStart;
       const end = el.selectionEnd;
+
+      // 💡 C4 FIX: Usamos el estado más fresco del store directamente
+      // para evitar que el closure de React use un documentText viejo.
+      const currentText = useDictationStore.getState().documentText;
       
-      const newText = documentText.substring(0, start) + unprocessedPhrase + documentText.substring(end);
+      const newText = 
+        currentText.substring(0, start) + 
+        unprocessedPhrase + 
+        currentText.substring(end);
+
       setDocumentText(newText);
       clearUnprocessedPhrase();
-      
-      // Mover el cursor después de que React actualice el DOM
+
       setTimeout(() => {
         el.selectionStart = start + unprocessedPhrase.length;
         el.selectionEnd = start + unprocessedPhrase.length;
         el.focus();
       }, 10);
     }
-  }, [unprocessedPhrase, documentText, setDocumentText, clearUnprocessedPhrase]);
+    // Eliminamos documentText de las dependencias para que solo se dispare
+    // cuando llega una frase nueva, no cuando el usuario teclea.
+  }, [unprocessedPhrase, setDocumentText, clearUnprocessedPhrase]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     // Excluir teclas de navegación para no pausar si el usuario solo se mueve

@@ -38,7 +38,7 @@ env/
 .DS_Store
 Thumbs.db
 
-# IDEs and Editors
+# IDEs and Editors & Tools
 .vscode/
 .idea/
 .cursor/
@@ -46,9 +46,11 @@ Thumbs.db
 .clinerules/
 .opencode/
 .pytest_cache/
+.agents/
+graphify-out/
+caveman/
 backend/.pytest_cache/
 backend/graphify-out/
-caveman/
 
 # Debug
 npm-debug.log*

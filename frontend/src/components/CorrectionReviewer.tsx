@@ -11,6 +11,8 @@ import { useUIStore } from '@/store/useUIStore';
 import { exportService, ExportFormat } from '@/infrastructure/export/ExportService';
 import { API_BASE } from '@/lib/api';
 import StyleReportPanel from '@/components/StyleReportPanel';
+import { ExportPreviewModal } from '@/components/ExportPreviewModal';
+import { TensionGraph } from '@/components/TensionGraph';
 
 // ─── Tipos ──────────────────────────────────────────────────────────────────
 
@@ -84,10 +86,13 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
   const [styleReport, setStyleReport] = useState<Record<string, any>>({});
   const [styleAlerts, setStyleAlerts] = useState<any[]>([]);
   const [styleSuggestions, setStyleSuggestions] = useState<any[]>([]);
+  const [tensionData, setTensionData] = useState<any[]>([]);
   const [progressMsg, setProgressMsg] = useState<string>('');
 
   const { setDocumentText } = useDictationStore();
   const { setCurrentView } = useUIStore();
+  const { outputFormat } = useToneStore();
+
   const exportRef = useRef<HTMLDivElement>(null);
   const workerRef = useRef<Worker | null>(null);
 
@@ -174,12 +179,15 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
 
     // Mínimo visual de 2 s para que se vean todos los mensajes
     const [response] = await Promise.all([
-      fetch(`${API_BASE}/api/process-text`, {
+      fetch(`${API_BASE}/style/process-text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           raw_text: rawText,
-          tone_name: toneName || 'Narrativa de Ciencia Ficción y Fantasía Épica',
+          tone_name: toneName,
+          format_type: outputFormat,
+          whisper_mode: useDictationStore.getState().isWhisperMode,
+          context_buffer: useDictationStore.getState().contextBuffer
         }),
       }).catch((e) => { console.error('[handleProcess]', e); return null; }),
       new Promise<void>((res) => setTimeout(res, 2100)), // esperar al último mensaje
@@ -206,6 +214,7 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
       setStyleReport(data.style_report ?? {});
       setStyleAlerts(data.alerts ?? []);
       setStyleSuggestions(data.suggestions ?? []);
+      setTensionData(data.tension_data ?? []);
     } catch (e) {
       setToast('Error al parsear la respuesta del backend.');
     } finally {
@@ -243,6 +252,7 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
 
   const handleSaveAndReturn = () => {
     setDocumentText(finalText);
+    useDictationStore.getState().addToContext(finalText);
     setCurrentView('dictation');
   };
 
@@ -257,19 +267,13 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
     return correctedText ?? rawText;
   };
 
-  const handleExport = async (format: ExportFormat) => {
+  const handleExport = () => {
     const text = getExportText();
     if (!text) {
       setToast('No hay contenido para exportar.');
       return;
     }
-    setIsExportOpen(false);
-    try {
-      await exportService.exportDocument(format, text);
-      setToast('Archivo descargado con éxito.');
-    } catch (e) {
-      setToast('Error al generar el archivo de exportación.');
-    }
+    setIsExportOpen(true);
   };
 
   // ─── Render ────────────────────────────────────────────────────────────────
@@ -333,34 +337,16 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
             </button>
           )}
 
-          {/* Dropdown Exportar */}
+          {/* Botón Exportar */}
           <div className="relative" ref={exportRef}>
             <button
-              onClick={() => setIsExportOpen(!isExportOpen)}
+              onClick={handleExport}
               disabled={!rawText}
               className="flex items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg transition-colors font-medium disabled:opacity-50 shadow-sm text-sm"
             >
               <Download size={16} />
               <span className="hidden sm:inline">Exportar</span>
-              <ChevronDown size={14} className={`transition-transform ${isExportOpen ? 'rotate-180' : ''}`} />
             </button>
-            {isExportOpen && (
-              <>
-                <div className="fixed inset-0 z-40" onClick={() => setIsExportOpen(false)} />
-                <div className="absolute right-0 mt-1.5 w-48 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl z-50 overflow-hidden py-1">
-                  <button onClick={() => handleExport('txt')} className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 text-left text-sm text-slate-700 dark:text-slate-200 transition-colors">
-                    <FileText size={15} className="text-blue-500" /> Texto Plano (.txt)
-                  </button>
-                  <button onClick={() => handleExport('docx')} className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 text-left text-sm text-slate-700 dark:text-slate-200 transition-colors">
-                    <FileText size={15} className="text-indigo-600" /> Word APA (.docx)
-                  </button>
-                  <div className="mx-3 border-t border-slate-100 dark:border-slate-700" />
-                  <button onClick={() => handleExport('pdf')} className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 text-left text-sm text-slate-700 dark:text-slate-200 transition-colors">
-                    <FileIcon size={15} className="text-red-500" /> Documento (.pdf)
-                  </button>
-                </div>
-              </>
-            )}
           </div>
         </div>
       </div>
@@ -381,118 +367,120 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
               </div>
             </div>
           ) : (
-          // Vista Track Changes — documento unificado centrado
-          <>
-          <div className="flex justify-center w-full">
-            <div
-              className="w-full max-w-3xl bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-[0_4px_40px_rgba(0,0,0,0.10)] dark:shadow-[0_4px_40px_rgba(0,0,0,0.4)] border border-slate-100 dark:border-slate-800 px-12 py-14 min-h-[60vh] font-serif"
-              onClick={() => setActiveTooltipId(null)}
-            >
-              {/* Indicador de tono */}
-              <p className="text-[11px] uppercase tracking-widest text-slate-300 dark:text-slate-600 mb-8 text-center font-sans">
-                ✦ Revisión de Estilo · {toneName} ✦
-              </p>
+          // Vista Track Changes y Paneles laterales
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
+            <div className="lg:col-span-2 flex justify-center w-full">
+              <div
+                className="w-full max-w-3xl bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-[0_4px_40px_rgba(0,0,0,0.10)] dark:shadow-[0_4px_40px_rgba(0,0,0,0.4)] border border-slate-100 dark:border-slate-800 px-12 py-14 min-h-[60vh] font-serif"
+                onClick={() => setActiveTooltipId(null)}
+              >
+                {/* Indicador de tono */}
+                <p className="text-[11px] uppercase tracking-widest text-slate-300 dark:text-slate-600 mb-8 text-center font-sans">
+                  ✦ Revisión de Estilo · {toneName} ✦
+                </p>
 
-              {/* Texto con control de cambios inline */}
-              <div className="text-[17px] leading-[1.9] text-slate-800 dark:text-slate-200 text-justify">
-                {chunks.map((chunk) => {
-                  // Texto sin cambios → renderizar normal
-                  if (!chunk.added && !chunk.removed) {
-                    return (
-                      <span key={chunk.id} className="whitespace-pre-wrap">
-                        {chunk.value}
-                      </span>
-                    );
-                  }
-
-                  const isActive = activeTooltipId === chunk.id;
-                  const isPending = chunk.status === 'pending';
-
-                  // Texto ELIMINADO (original que se reemplazará)
-                  if (chunk.removed) {
-                    if (chunk.status === 'accepted') return null; // Eliminado: ocultarlo
-
-                    return (
-                      <span key={chunk.id} className="relative inline" style={{ zIndex: isActive ? 100 : 'auto' }}>
-                        <del
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (isPending) setActiveTooltipId(isActive ? null : chunk.id);
-                            else updateChunkStatus(chunk.id, 'pending');
-                          }}
-                          className={`
-                            cursor-pointer whitespace-pre-wrap no-underline transition-all duration-150 rounded-sm px-0.5
-                            ${isPending
-                              ? 'text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20 decoration-red-400 underline decoration-dashed underline-offset-2'
-                              : 'text-slate-700 dark:text-slate-300 no-underline bg-transparent' // Rechazado → texto normal sin tachar
-                            }
-                          `}
-                          title={isPending ? 'Clic para decidir' : 'Restaurado'}
-                        >
+                {/* Texto con control de cambios inline */}
+                <div className="text-[17px] leading-[1.9] text-slate-800 dark:text-slate-200 text-justify">
+                  {chunks.map((chunk) => {
+                    // Texto sin cambios → renderizar normal
+                    if (!chunk.added && !chunk.removed) {
+                      return (
+                        <span key={chunk.id} className="whitespace-pre-wrap">
                           {chunk.value}
-                        </del>
-                        {isActive && isPending && (
-                          <ActionTooltip
-                            chunkId={chunk.id}
-                            isAdded={false}
-                            onAccept={() => updateChunkStatus(chunk.id, 'accepted')}
-                            onReject={() => updateChunkStatus(chunk.id, 'rejected')}
-                          />
-                        )}
-                      </span>
-                    );
-                  }
+                        </span>
+                      );
+                    }
 
-                  // Texto AÑADIDO (sugerencia del NLP)
-                  if (chunk.added) {
-                    if (chunk.status === 'rejected') return null; // Rechazado: no mostrarlo
+                    const isActive = activeTooltipId === chunk.id;
+                    const isPending = chunk.status === 'pending';
 
-                    return (
-                      <span key={chunk.id} className="relative inline" style={{ zIndex: isActive ? 100 : 'auto' }}>
-                        <ins
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (isPending) setActiveTooltipId(isActive ? null : chunk.id);
-                            else updateChunkStatus(chunk.id, 'pending');
-                          }}
-                          className={`
-                            cursor-pointer whitespace-pre-wrap transition-all duration-150 rounded-sm px-0.5
-                            ${isPending
-                              ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 underline decoration-emerald-400 underline-offset-2'
-                              : 'text-slate-800 dark:text-slate-200 no-underline bg-transparent' // Aceptado → texto normal
-                            }
-                          `}
-                          title={isPending ? 'Clic para decidir' : 'Aceptado'}
-                          style={{ textDecoration: chunk.status === 'accepted' ? 'none' : undefined }}
-                        >
-                          {chunk.value}
-                        </ins>
-                        {isActive && isPending && (
-                          <ActionTooltip
-                            chunkId={chunk.id}
-                            isAdded={true}
-                            onAccept={() => updateChunkStatus(chunk.id, 'accepted')}
-                            onReject={() => updateChunkStatus(chunk.id, 'rejected')}
-                          />
-                        )}
-                      </span>
-                    );
-                  }
+                    // Texto ELIMINADO (original que se reemplazará)
+                    if (chunk.removed) {
+                      if (chunk.status === 'accepted') return null; // Eliminado: ocultarlo
 
-                  return null;
-                })}
+                      return (
+                        <span key={chunk.id} className="relative inline" style={{ zIndex: isActive ? 100 : 'auto' }}>
+                          <del
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (isPending) setActiveTooltipId(isActive ? null : chunk.id);
+                              else updateChunkStatus(chunk.id, 'pending');
+                            }}
+                            className={`
+                              cursor-pointer whitespace-pre-wrap no-underline transition-all duration-150 rounded-sm px-0.5
+                              ${isPending
+                                ? 'text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20 decoration-red-400 underline decoration-dashed underline-offset-2'
+                                : 'text-slate-700 dark:text-slate-300 no-underline bg-transparent' // Rechazado → texto normal sin tachar
+                              }
+                            `}
+                            title={isPending ? 'Clic para decidir' : 'Restaurado'}
+                          >
+                            {chunk.value}
+                          </del>
+                          {isActive && isPending && (
+                            <ActionTooltip
+                              chunkId={chunk.id}
+                              isAdded={false}
+                              onAccept={() => updateChunkStatus(chunk.id, 'accepted')}
+                              onReject={() => updateChunkStatus(chunk.id, 'rejected')}
+                            />
+                          )}
+                        </span>
+                      );
+                    }
+
+                    // Texto AÑADIDO (sugerencia del NLP)
+                    if (chunk.added) {
+                      if (chunk.status === 'rejected') return null; // Rechazado: no mostrarlo
+
+                      return (
+                        <span key={chunk.id} className="relative inline" style={{ zIndex: isActive ? 100 : 'auto' }}>
+                          <ins
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (isPending) setActiveTooltipId(isActive ? null : chunk.id);
+                              else updateChunkStatus(chunk.id, 'pending');
+                            }}
+                            className={`
+                              cursor-pointer whitespace-pre-wrap transition-all duration-150 rounded-sm px-0.5
+                              ${isPending
+                                ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 underline decoration-emerald-400 underline-offset-2'
+                                : 'text-slate-800 dark:text-slate-200 no-underline bg-transparent' // Aceptado → texto normal
+                              }
+                            `}
+                            title={isPending ? 'Clic para decidir' : 'Aceptado'}
+                            style={{ textDecoration: chunk.status === 'accepted' ? 'none' : undefined }}
+                          >
+                            {chunk.value}
+                          </ins>
+                          {isActive && isPending && (
+                            <ActionTooltip
+                              chunkId={chunk.id}
+                              isAdded={true}
+                              onAccept={() => updateChunkStatus(chunk.id, 'accepted')}
+                              onReject={() => updateChunkStatus(chunk.id, 'rejected')}
+                            />
+                          )}
+                        </span>
+                      );
+                    }
+
+                    return null;
+                  })}
+                </div>
               </div>
             </div>
+            
+            {/* ── Paneles laterales ── */}
+            <div className="space-y-6">
+              <TensionGraph data={tensionData} />
+              <StyleReportPanel
+                styleReport={styleReport}
+                alerts={styleAlerts}
+                suggestions={styleSuggestions}
+              />
+            </div>
           </div>
-          {/* ── Panel de diagnóstico estilométrico ── */}
-          <div className="w-full max-w-3xl mx-auto px-4">
-            <StyleReportPanel
-              styleReport={styleReport}
-              alerts={styleAlerts}
-              suggestions={styleSuggestions}
-            />
-          </div>
-          </>
           )
         ) : (
           // Estado inicial — sin texto procesado todavía
@@ -541,6 +529,12 @@ export default function CorrectionReviewer({ rawText, toneName }: CorrectionRevi
           {toast}
         </div>
       )}
+      {/* ── Modal de Exportación ── */}
+      <ExportPreviewModal 
+        isOpen={isExportOpen} 
+        onClose={() => setIsExportOpen(false)} 
+        text={getExportText()} 
+      />
     </div>
   );
 }

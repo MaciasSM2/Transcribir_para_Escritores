@@ -1,0 +1,1557 @@
+{
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\auth.py": {
+    "mtime": 1779991124.8027427,
+    "ast_hash": "d081c66ea93df186cb00f2da2e52e7ff",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\database.py": {
+    "mtime": 1779994243.893561,
+    "ast_hash": "6c9f949a487ee973611b96e64b7e37aa",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\download_model.py": {
+    "mtime": 1778636621.010179,
+    "ast_hash": "f65eff1592539ed85d80861c414956cc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\main.py": {
+    "mtime": 1787426616.7141626,
+    "ast_hash": "9d52a8ac97570623a66644615ba955df",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\migrate_add_status.py": {
+    "mtime": 1779314405.372144,
+    "ast_hash": "f076b2f9fad05223440bf76cb170bd13",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\migrate_add_style_tables.py": {
+    "mtime": 1779328147.630225,
+    "ast_hash": "43dbe382a67c0f205b09ab5852e889c9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\migrate_fix_tone_accents.py": {
+    "mtime": 1779416783.4163225,
+    "ast_hash": "cf328ac2ba4cf23c059de325e0687400",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\models.py": {
+    "mtime": 1779996321.7425575,
+    "ast_hash": "80e377c512b0bda91be7d82204d3a642",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\nlp_processor.py": {
+    "mtime": 1779344793.9674635,
+    "ast_hash": "d8e37b683b02d2ad83206599610312c8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\schemas.py": {
+    "mtime": 1780030258.9212203,
+    "ast_hash": "3ab7fab24ac98f41acf6134cbee0cf1b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\test_engine.py": {
+    "mtime": 1779343465.9152415,
+    "ast_hash": "bac3cab88b7dcf3f1437111523f3f5dc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\test_integration_async.py": {
+    "mtime": 1779315141.6377366,
+    "ast_hash": "65d887d6c1a57d70960c9028c423e985",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\alembic\\env.py": {
+    "mtime": 1779990276.9281857,
+    "ast_hash": "7622f6c74568e2f5386e716ead600f50",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\alembic\\versions\\7d23c8fdca38_initial_schema.py": {
+    "mtime": 1779990293.421971,
+    "ast_hash": "912e1ccfa458b9073e3e7d438e72d59f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\routers\\__init__.py": {
+    "mtime": 1779990313.6497283,
+    "ast_hash": "e9151bc9598a9062ff547f0bdfcbbe63",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\scripts\\seed_literary_dna.py": {
+    "mtime": 1779416752.9215784,
+    "ast_hash": "fc80187f92c3cb3697ba5e3979bdbe70",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\scripts\\seed_thesaurus.py": {
+    "mtime": 1779416776.4456906,
+    "ast_hash": "8d1a44801e00bb3de902cd5978b4ef1d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\style_analyzer.py": {
+    "mtime": 1779329977.498035,
+    "ast_hash": "b645a8be78b2056564289e2de7419bba",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\style_expert_engine.py": {
+    "mtime": 1779343086.6097884,
+    "ast_hash": "15fc7d91b24e217ddc0dcf3d2ff846e2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\__init__.py": {
+    "mtime": 1779993216.0221574,
+    "ast_hash": "dc48278538013864fefcaab4b437b505",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\conftest.py": {
+    "mtime": 1787426667.046335,
+    "ast_hash": "0108d4b48fac5a87f09026f4ba23e9ba",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_routers_history.py": {
+    "mtime": 1780014169.5916984,
+    "ast_hash": "77b71d2663fc063e87427c5c6a088318",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_routers_style.py": {
+    "mtime": 1780014174.4728878,
+    "ast_hash": "479322bfbcb41970679b7423ef0ee9b8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_routers_tones.py": {
+    "mtime": 1780014363.7551808,
+    "ast_hash": "644b71374f9671cf820b28b8a9a37778",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_routers_transcription.py": {
+    "mtime": 1780014164.7319174,
+    "ast_hash": "662ba1e28098edab5e230ab60ec65062",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\__init__.py": {
+    "mtime": 1779990588.5286357,
+    "ast_hash": "8d771d95e254e5e632c1dcfdef3bd38a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\requirements.txt": {
+    "mtime": 1787426601.7764447,
+    "ast_hash": "4156d77fc89f26004b1eb67b51f27094",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\reparar_gema.py": {
+    "mtime": 1780014072.0655277,
+    "ast_hash": "005daca37783591896ed676d79854049",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\alembic\\versions\\5c087597b545_initial_schema.py": {
+    "mtime": 1779993193.555931,
+    "ast_hash": "0b49b9f89ba452783b8160227bffcf94",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\__init__.py": {
+    "mtime": 1779993444.7748492,
+    "ast_hash": "575affbf619b8526f18a06185057b746",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\router.py": {
+    "mtime": 1780030301.817313,
+    "ast_hash": "166c223f95629218748f020c09f3a75d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\__init__.py": {
+    "mtime": 1779993450.2463527,
+    "ast_hash": "2dccff1491c1c0ffe29ffaace35319c4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\audio.py": {
+    "mtime": 1780039550.183215,
+    "ast_hash": "f0dec136531b862a8d7238f9f84666bb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\auth.py": {
+    "mtime": 1780030254.9178464,
+    "ast_hash": "2fd26ec38f381bf3c6560c031420d925",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\dna.py": {
+    "mtime": 1780030264.10956,
+    "ast_hash": "eceeda58fabce8a08ef5bac43f08601a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\documents.py": {
+    "mtime": 1780030263.3138585,
+    "ast_hash": "b61135c5955bda55819c04b73ef952c7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\metadata.py": {
+    "mtime": 1779995663.411727,
+    "ast_hash": "0a8a23354cab8e12b259618327250185",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\style.py": {
+    "mtime": 1787426628.2325158,
+    "ast_hash": "8c36ca807dd2acbb578094e3b8ffd08d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\system.py": {
+    "mtime": 1779996515.804833,
+    "ast_hash": "104a60bc05a5d861ebfb97ae68ea98a1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\tones.py": {
+    "mtime": 1787426796.8518138,
+    "ast_hash": "18f8e31d2edf21535316420be33332d2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\__init__.py": {
+    "mtime": 1779993452.5662851,
+    "ast_hash": "e8c60a81c612553c8d42f815a485c3a9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\migrations\\env.py": {
+    "mtime": 1779993176.937581,
+    "ast_hash": "ef2e67a918679f3ae91052235deec2f7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\audio\\ffmpeg_processor.py": {
+    "mtime": 1779992903.1123626,
+    "ast_hash": "4e955845025022f34af8b361710c747f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\audio\\interfaces.py": {
+    "mtime": 1779992901.0940528,
+    "ast_hash": "0fbd823104cc7ac4adc48e45bdf2f9e0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\infrastructure\\interfaces.py": {
+    "mtime": 1779996419.4255607,
+    "ast_hash": "6d3afe87cafb46722b0a02d6fc55db0c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\infrastructure\\local_orchestrator.py": {
+    "mtime": 1787426610.102756,
+    "ast_hash": "276c96810974b78f1b479b4f67593415",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\infrastructure\\system_guardian.py": {
+    "mtime": 1780039700.8832865,
+    "ast_hash": "f0c49f721929caaa8b2c8e13e5496cb4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\infrastructure\\windows_provider.py": {
+    "mtime": 1779996506.17172,
+    "ast_hash": "efa7ba1f0b2abfc38853deb8f69c05c6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\infrastructure\\__init__.py": {
+    "mtime": 1779996411.5535018,
+    "ast_hash": "aed190efb39df392d9867d91e90d98aa",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\base_cleaner.py": {
+    "mtime": 1779992914.2526915,
+    "ast_hash": "39b1ce010c4998eab62f9461ffa6c5c7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\interfaces.py": {
+    "mtime": 1779995643.0541306,
+    "ast_hash": "1fb1f89b7d8003953e5edb0316b8cc93",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\metadata_engine.py": {
+    "mtime": 1779995655.5524194,
+    "ast_hash": "558dc07043535ae7cd23a16d8115017c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\narrative_analyzer.py": {
+    "mtime": 1779995540.0133572,
+    "ast_hash": "936da2d4342b8f42c0214b300d5ec881",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\ollama_adapter.py": {
+    "mtime": 1779996331.1760228,
+    "ast_hash": "7cd5888ccf3650b7c6f83e1623d87ab3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\resilience_manager.py": {
+    "mtime": 1779996234.8965237,
+    "ast_hash": "bce1e72359b37339b638cb9555163b17",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\structural_processor.py": {
+    "mtime": 1779994619.7253633,
+    "ast_hash": "9b7054c648a8a23daaea12f5d104aed8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\stylometry_engine.py": {
+    "mtime": 1779996309.882018,
+    "ast_hash": "b9617a2e5a26dcdeaa3cb857d97f87a2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\transcription\\orchestrator.py": {
+    "mtime": 1779992935.147324,
+    "ast_hash": "16ece3d5216f2b023200c0811a9e12da",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\transcription\\vosk_worker.py": {
+    "mtime": 1779992934.313119,
+    "ast_hash": "d6005b265ce1d893602339f463a0715b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\stress_test.py": {
+    "mtime": 1787426659.1549933,
+    "ast_hash": "5ef1ff3581940d9f393010c7f953da7c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_integration.py": {
+    "mtime": 1787426651.2305775,
+    "ast_hash": "53d1dd891577f3f7acf5fe6930c9c54c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_literary_engine.py": {
+    "mtime": 1779994541.9564326,
+    "ast_hash": "5aef4989a8cbe452fc916ec4898658b6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_metadata_engine.py": {
+    "mtime": 1779995795.6085303,
+    "ast_hash": "2c9f3a48aaaf2eb1f4ca75634779337c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\gemini-extension.json": {
+    "mtime": 1779988006.3175268,
+    "ast_hash": "b66a56b7179c57fb8a0a9279c8ac65e5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\install.ps1": {
+    "mtime": 1779988006.3185344,
+    "ast_hash": "189791d4429ac9a6a8c5ad14f9d520af",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\install.sh": {
+    "mtime": 1779988006.3185344,
+    "ast_hash": "874c6ce0f7a81baa7ed36de0a6a29358",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\package.json": {
+    "mtime": 1779988006.3195326,
+    "ast_hash": "526497ae2988ffc8e9896387c2ed1d79",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills-lock.json": {
+    "mtime": 1779988006.3344283,
+    "ast_hash": "2ea50b05a605e3f4712afe0e2f664e31",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.agents\\plugins\\marketplace.json": {
+    "mtime": 1779988006.283633,
+    "ast_hash": "7a7c9d4a3c93fe00c0324966bef6f3c6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.claude-plugin\\marketplace.json": {
+    "mtime": 1779988006.2859604,
+    "ast_hash": "e5227dc7f420052ea05c0b3541b61e4d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.claude-plugin\\plugin.json": {
+    "mtime": 1779988006.2859604,
+    "ast_hash": "1089ef1d169eb58e865abc2f22965237",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.codex\\hooks.json": {
+    "mtime": 1779988006.2869534,
+    "ast_hash": "cd58ac55ed502d58bebddf217a1ba790",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\benchmarks\\prompts.json": {
+    "mtime": 1779988006.3013904,
+    "ast_hash": "118bb3be1bcb3160dc02f98204f6729a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\benchmarks\\run.py": {
+    "mtime": 1779988006.3028967,
+    "ast_hash": "fa73a2f83ebdd1bd4c252a11ab5ef9a8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\bin\\install.js": {
+    "mtime": 1779989855.508105,
+    "ast_hash": "fe5376159f7269f2bd34a0b1363124f0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\bin\\lib\\openclaw.js": {
+    "mtime": 1779988006.305001,
+    "ast_hash": "acb6acd4351f7c7f01cae18115b77864",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\bin\\lib\\settings.js": {
+    "mtime": 1779988006.3060014,
+    "ast_hash": "777b2345261840b560b922be3315c453",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\evals\\llm_run.py": {
+    "mtime": 1779988006.3145294,
+    "ast_hash": "5e35c4902a8a89e7f982c91a38e7c06c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\evals\\measure.py": {
+    "mtime": 1779988006.3155272,
+    "ast_hash": "a3b70208993525e7bea234ca893effba",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\evals\\plot.py": {
+    "mtime": 1779988006.3155272,
+    "ast_hash": "02ba92a2a308aab29a671581307c1723",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\.codex-plugin\\plugin.json": {
+    "mtime": 1779988006.3210423,
+    "ast_hash": "e8265258a183dbcbe81b315cda2d0c82",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\scripts\\benchmark.py": {
+    "mtime": 1779988006.3290746,
+    "ast_hash": "07500037c8606fc9ab1832f55a5ff346",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\scripts\\cli.py": {
+    "mtime": 1779988006.3290746,
+    "ast_hash": "c558740fb2c74c292c1886353add193a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\scripts\\compress.py": {
+    "mtime": 1779988006.330073,
+    "ast_hash": "b64cfd042fdf93e8ac852fb3b87195a3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\scripts\\detect.py": {
+    "mtime": 1779988006.330073,
+    "ast_hash": "951a4593947c23cb9bfe8d99dc245b16",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\scripts\\validate.py": {
+    "mtime": 1779988006.3310723,
+    "ast_hash": "5d3394df7677d1ee08f0b69bb767b38c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\scripts\\__init__.py": {
+    "mtime": 1779988006.3280761,
+    "ast_hash": "d6acae7e188357d1bc1258ce02a29811",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\scripts\\__main__.py": {
+    "mtime": 1779988006.3280761,
+    "ast_hash": "5bd0e02db4907bf4e435e5d770256fef",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\scripts\\benchmark.py": {
+    "mtime": 1779988006.3427205,
+    "ast_hash": "07500037c8606fc9ab1832f55a5ff346",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\scripts\\cli.py": {
+    "mtime": 1779988006.343188,
+    "ast_hash": "c558740fb2c74c292c1886353add193a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\scripts\\compress.py": {
+    "mtime": 1779988006.3437264,
+    "ast_hash": "b64cfd042fdf93e8ac852fb3b87195a3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\scripts\\detect.py": {
+    "mtime": 1779988006.3437264,
+    "ast_hash": "951a4593947c23cb9bfe8d99dc245b16",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\scripts\\validate.py": {
+    "mtime": 1779988006.3447258,
+    "ast_hash": "5d3394df7677d1ee08f0b69bb767b38c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\scripts\\__init__.py": {
+    "mtime": 1779988006.3410676,
+    "ast_hash": "d6acae7e188357d1bc1258ce02a29811",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\scripts\\__main__.py": {
+    "mtime": 1779988006.3421378,
+    "ast_hash": "5bd0e02db4907bf4e435e5d770256fef",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\caveman-activate.js": {
+    "mtime": 1779988006.351782,
+    "ast_hash": "ff66e353507b8db95f4cc6c11e7addd8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\caveman-config.js": {
+    "mtime": 1779988006.3532765,
+    "ast_hash": "a6868b6971ff14cb57e15d45f5a1c150",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\caveman-mode-tracker.js": {
+    "mtime": 1779988006.354278,
+    "ast_hash": "5be6fbf20ab30e518ff35ea37c6eb12b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\caveman-stats.js": {
+    "mtime": 1779988006.354278,
+    "ast_hash": "dbebcd4dd76143fb9f0a063178e30529",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\caveman-statusline.ps1": {
+    "mtime": 1779988006.355279,
+    "ast_hash": "1e873cf2ab451b5808bb6d8e3f7f69c4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\caveman-statusline.sh": {
+    "mtime": 1779988006.355279,
+    "ast_hash": "275c166e4462f502304b05825bd7e1e5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\install.ps1": {
+    "mtime": 1779988006.3562748,
+    "ast_hash": "1322f3d04cdd7db255612b05e9a92d98",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\install.sh": {
+    "mtime": 1779988006.3562748,
+    "ast_hash": "f00efc9530714c670b9c61ffdbd409cb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\package.json": {
+    "mtime": 1779988006.3572748,
+    "ast_hash": "56368b3e2b84dac2c9ed38b5c4329ec2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\uninstall.ps1": {
+    "mtime": 1779988006.3582766,
+    "ast_hash": "16bb04dc1a84d268a3814746de697e42",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\uninstall.sh": {
+    "mtime": 1779988006.3582766,
+    "ast_hash": "f267cfe1c1c511911d7fcc94eaf47789",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\mcp-servers\\caveman-shrink\\compress.js": {
+    "mtime": 1779988006.3602743,
+    "ast_hash": "ca3264e3ccb7361148408e0149596da7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\mcp-servers\\caveman-shrink\\index.js": {
+    "mtime": 1779988006.3602743,
+    "ast_hash": "e48814af48c4ed096998d8a8ecae2822",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\mcp-servers\\caveman-shrink\\package.json": {
+    "mtime": 1779988006.3602743,
+    "ast_hash": "769f139333c89115ec432ff4897de3f8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\package.json": {
+    "mtime": 1779988006.3647926,
+    "ast_hash": "1322e46008e0a4f3ebdcae4a720fc264",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\plugin.js": {
+    "mtime": 1779988006.3647926,
+    "ast_hash": "030cd79d88be20dec251e100aa8d2bee",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\tools\\caveman-init.js": {
+    "mtime": 1779988006.368163,
+    "ast_hash": "b1682925d6f5ff8fa77437f327d90b09",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\test_caveman_init.js": {
+    "mtime": 1779988006.378082,
+    "ast_hash": "628fd4d28807989239137c168480ed61",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\test_caveman_stats.js": {
+    "mtime": 1779988006.3790834,
+    "ast_hash": "657ac57217e6a5b4b430cd4a4bb1cf5b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\test_compress_safety.py": {
+    "mtime": 1779988006.3790834,
+    "ast_hash": "f174f546f26e9a64e7205a1df190f209",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\test_hooks.py": {
+    "mtime": 1779988006.3800807,
+    "ast_hash": "7cecea533a7c5b9963e74256c0f1a34c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\test_mcp_shrink.js": {
+    "mtime": 1779988006.3800807,
+    "ast_hash": "74de6ab0d14591b7a88bc5e22528d29c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\test_symlink_flag.js": {
+    "mtime": 1779988006.3810828,
+    "ast_hash": "e57adfb67459468ecc874aa80e3470b6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\test_validate_inline.py": {
+    "mtime": 1779988006.3810828,
+    "ast_hash": "943775a0b21e0d6001dd9c0dd37ccdce",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\verify_repo.py": {
+    "mtime": 1779988006.3824215,
+    "ast_hash": "05bc5256011ff46124268d4c76c6c33f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\installer\\e2e.dryrun.test.mjs": {
+    "mtime": 1779988006.374705,
+    "ast_hash": "2531f609d3580625424182d0e80e7721",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\installer\\e2e.freshinstall.test.mjs": {
+    "mtime": 1779988006.3757002,
+    "ast_hash": "d7b6f268cfe5545d5f66bdf45492b3f8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\installer\\opencode.test.mjs": {
+    "mtime": 1779988006.3757002,
+    "ast_hash": "512a761f329e3818d7636257cd19e8fe",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\installer\\unit.argv.test.mjs": {
+    "mtime": 1779988006.3769994,
+    "ast_hash": "ea3cf15d12c2e78ae1fe2753a7ac0c70",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\installer\\unit.settings.test.mjs": {
+    "mtime": 1779988006.3769994,
+    "ast_hash": "8d90f5bf8ff5a23fe655757d5dae21df",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\eslint.config.mjs": {
+    "mtime": 1778549547.9738607,
+    "ast_hash": "dfa1f5f6a7037bf39dc510f30b180002",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\next.config.ts": {
+    "mtime": 1778549548.1092186,
+    "ast_hash": "9b77af189a21a7a64e4bd7a426f64176",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\package.json": {
+    "mtime": 1780042250.5007215,
+    "ast_hash": "bf44ac328162cbd4df0b42b2b9f8d672",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\postcss.config.mjs": {
+    "mtime": 1778549548.006415,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\tsconfig.json": {
+    "mtime": 1778549548.3707688,
+    "ast_hash": "ee17fd1c97c735e9f3564e3f5251f125",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\app\\error.tsx": {
+    "mtime": 1778972680.702365,
+    "ast_hash": "77ba78626b4dfc78865cf2a25f1b02ea",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\app\\layout.tsx": {
+    "mtime": 1778972636.7238455,
+    "ast_hash": "3874931dff2e38d742ca7800455df97a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\app\\page.tsx": {
+    "mtime": 1780019120.8943496,
+    "ast_hash": "34db27e68e1a15904a23dae378cb76ec",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\app\\api\\export\\docx-intact\\route.ts": {
+    "mtime": 1780031047.8816726,
+    "ast_hash": "3c115f05b0ede897fab6fdcd52657d72",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\CorrectionReviewer.tsx": {
+    "mtime": 1780017930.3636901,
+    "ast_hash": "491d8b2ab06027091b0e2aa23ec6156b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\DictationCanvas.tsx": {
+    "mtime": 1780018905.9417515,
+    "ast_hash": "ff4151dddfc1c0b2f6705f8bc2adb068",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\ExportPreviewModal.tsx": {
+    "mtime": 1779995357.2260747,
+    "ast_hash": "332d4a4b1f334326813f774c00fe9a2a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\SettingsMenu.tsx": {
+    "mtime": 1780040135.8299086,
+    "ast_hash": "2eb4e1a3f1d42032d2b4a3f167cee56f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\StyleReportPanel.tsx": {
+    "mtime": 1779343426.7783732,
+    "ast_hash": "63ec317cf847361439cd84b5cb06a7e0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\TensionGraph.tsx": {
+    "mtime": 1779995565.7321763,
+    "ast_hash": "0ba7e2e20c61f65d429ae81ded1a4cea",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\TopNavbar.tsx": {
+    "mtime": 1780014558.4231129,
+    "ast_hash": "924a32647835e36c658d9b8fc60abff6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Editor\\RichCanvas.tsx": {
+    "mtime": 1780042579.8725245,
+    "ast_hash": "b672c33afde9bf20db20e7e4bc4100eb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\hooks\\useCleanDictation.ts": {
+    "mtime": 1780019243.961227,
+    "ast_hash": "d1a32b4d8c5bb263031f8674415bd9c7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\api\\DocumentApiService.ts": {
+    "mtime": 1780036923.656304,
+    "ast_hash": "7a46afa698f9369a768ea3254e932efb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\audio\\BrowserSpeechAdapter.ts": {
+    "mtime": 1779994846.4488814,
+    "ast_hash": "c1cbaeebda30325a7efe02c9dd9e7260",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\audio\\ISpeechTranscriber.ts": {
+    "mtime": 1779994833.5518014,
+    "ast_hash": "f99a9aaad9cdf1fbe07d93705dd345bd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\BrowserDownloadHelper.ts": {
+    "mtime": 1778970229.8114612,
+    "ast_hash": "236bf084316ecd736e26c2712ffc5ed6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\DocxEditorialExportStrategy.ts": {
+    "mtime": 1779997272.3827856,
+    "ast_hash": "246540d090cb99113f1e799cfdcb87b9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\DocxExportStrategy.ts": {
+    "mtime": 1779994524.010049,
+    "ast_hash": "693fff07b55b53b7dd4ac1493f0de79a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\DocxIntactExportStrategy.ts": {
+    "mtime": 1779997471.6259847,
+    "ast_hash": "0329e277d25f9fdc5ea338f21314bccd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\ExportService.ts": {
+    "mtime": 1780036930.694167,
+    "ast_hash": "da7650fc24ccb11ea1e6983cdf794ce3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\IDocumentExporter.ts": {
+    "mtime": 1778970221.9928234,
+    "ast_hash": "df837d442d03dc8a073c7c0ce6b91823",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\PdfExportStrategy.ts": {
+    "mtime": 1778972694.432732,
+    "ast_hash": "40118d1afad67a71e1259e600bbc0e8c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\export\\TxtExportStrategy.ts": {
+    "mtime": 1778970237.8770878,
+    "ast_hash": "021739e1dc11c7cdda583798e1dfff8e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\lib\\api-client.ts": {
+    "mtime": 1779996566.7729173,
+    "ast_hash": "a7a500fee31b89ac8e3cb745e6e50a9f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\lib\\api.ts": {
+    "mtime": 1780018949.1381173,
+    "ast_hash": "f7b8f894684a59806bd159db1b03c59c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\lib\\diffWorker.ts": {
+    "mtime": 1778969491.5315597,
+    "ast_hash": "ee58434950b59fc9f7b6b2fb8f1a5f2b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\store\\useDictationStore.ts": {
+    "mtime": 1780019234.4522903,
+    "ast_hash": "a38836c92e1a946b424ff9585a0e609c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\store\\useHistoryStore.ts": {
+    "mtime": 1780036959.5827098,
+    "ast_hash": "ed13f9e60502d0a1be404925bb9a10dd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\store\\useToneStore.ts": {
+    "mtime": 1779994329.630165,
+    "ast_hash": "ece3b4c7eaae852ca1302bc6e4bace8f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\store\\useUIStore.ts": {
+    "mtime": 1779997169.7313774,
+    "ast_hash": "5073baf158e911998dfa88ae7e4d9b8d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\AGENTS.md": {
+    "mtime": 1779988111.6053925,
+    "ast_hash": "b270ab9b0929c4f5ddd73b9e51169a9b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.agents\\rules\\graphify.md": {
+    "mtime": 1779991349.7709334,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.agents\\workflows\\graphify.md": {
+    "mtime": 1779991349.7719386,
+    "ast_hash": "84de69efd46ab0b8430393bd4188f8f2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.clinerules\\caveman.md": {
+    "mtime": 1779988111.6032996,
+    "ast_hash": "b270ab9b0929c4f5ddd73b9e51169a9b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.github\\copilot-instructions.md": {
+    "mtime": 1779988111.6038234,
+    "ast_hash": "b270ab9b0929c4f5ddd73b9e51169a9b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.opencode\\AGENTS.md": {
+    "mtime": 1779988111.604876,
+    "ast_hash": "b270ab9b0929c4f5ddd73b9e51169a9b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.windsurf\\rules\\caveman.md": {
+    "mtime": 1779988111.6027808,
+    "ast_hash": "fdee5c88bc960d78441fdaa65d685cf2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\AGENTS.md": {
+    "mtime": 1779988006.2950525,
+    "ast_hash": "2932bb46e95e05811603195444e5b87c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\CLAUDE.md": {
+    "mtime": 1779988006.296053,
+    "ast_hash": "186cf3f31ff5ae6782ad7235ad9a9f99",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\CONTRIBUTING.md": {
+    "mtime": 1779988006.296053,
+    "ast_hash": "474b77bd58b2ceb5921d88c631c2e2f7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\GEMINI.md": {
+    "mtime": 1779988006.2970483,
+    "ast_hash": "2932bb46e95e05811603195444e5b87c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\INSTALL.md": {
+    "mtime": 1779988006.2970483,
+    "ast_hash": "72c8a3d166c266ab54a8263af3e51cff",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\README.md": {
+    "mtime": 1779988006.2980492,
+    "ast_hash": "636e8a1e86e43642f6dbe46804aeafc6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.agents\\skills\\cavecrew\\SKILL.md": {
+    "mtime": 1779988006.2849023,
+    "ast_hash": "6ea8150438c6392a5ee0afef0a735ad4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.github\\FUNDING.yml": {
+    "mtime": 1779988006.2883847,
+    "ast_hash": "63b34b9fcfc2c10171316e77d80bd56d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.github\\ISSUE_TEMPLATE\\bug_report.md": {
+    "mtime": 1779988006.289385,
+    "ast_hash": "d104dac759dc8efae547c17351451f5e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.github\\ISSUE_TEMPLATE\\feature_request.md": {
+    "mtime": 1779988006.289385,
+    "ast_hash": "beb4179b966426d8b0c64f8c9913de6a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.github\\workflows\\sync-skill.yml": {
+    "mtime": 1779988006.2903852,
+    "ast_hash": "a91fe34c249ecb6d5dea92ec930c04aa",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.junie\\skills\\cavecrew\\SKILL.md": {
+    "mtime": 1779988006.291891,
+    "ast_hash": "6ea8150438c6392a5ee0afef0a735ad4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.kiro\\skills\\cavecrew\\SKILL.md": {
+    "mtime": 1779988006.2928991,
+    "ast_hash": "6ea8150438c6392a5ee0afef0a735ad4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\.roo\\skills\\cavecrew\\SKILL.md": {
+    "mtime": 1779988006.2950525,
+    "ast_hash": "6ea8150438c6392a5ee0afef0a735ad4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\agents\\cavecrew-builder.md": {
+    "mtime": 1779988006.2992306,
+    "ast_hash": "c9bd5feac5ba542de2a6c59ab3e552c4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\agents\\cavecrew-investigator.md": {
+    "mtime": 1779988006.3003917,
+    "ast_hash": "7086e92d0a9140cec9cec3a1b82463ba",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\agents\\cavecrew-reviewer.md": {
+    "mtime": 1779988006.3003917,
+    "ast_hash": "4d0841491315b77d5b45d96948510b84",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\benchmarks\\requirements.txt": {
+    "mtime": 1779988006.3018947,
+    "ast_hash": "962f8f00d471929186d0603180d131bc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\docs\\index.html": {
+    "mtime": 1779988006.3120165,
+    "ast_hash": "bdac304fe7b20e4311205abe408361c3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\docs\\install-windows.md": {
+    "mtime": 1779988006.313531,
+    "ast_hash": "3c298e27e8105132d1149532e3c659f7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\evals\\README.md": {
+    "mtime": 1779988006.3145294,
+    "ast_hash": "0eb4ed685b6eaf21e29db37fe2b1e7e1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\evals\\prompts\\en.txt": {
+    "mtime": 1779988006.3165274,
+    "ast_hash": "a9aa90f33cbe052a5b1186da15b1980a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\agents\\cavecrew-builder.md": {
+    "mtime": 1779988006.322049,
+    "ast_hash": "c9bd5feac5ba542de2a6c59ab3e552c4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\agents\\cavecrew-investigator.md": {
+    "mtime": 1779988006.3230276,
+    "ast_hash": "7086e92d0a9140cec9cec3a1b82463ba",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\agents\\cavecrew-reviewer.md": {
+    "mtime": 1779988006.3230276,
+    "ast_hash": "4d0841491315b77d5b45d96948510b84",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\cavecrew\\SKILL.md": {
+    "mtime": 1779988006.3254817,
+    "ast_hash": "6ea8150438c6392a5ee0afef0a735ad4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman\\SKILL.md": {
+    "mtime": 1779988006.33208,
+    "ast_hash": "90e5f9d97791c2080495926731e0f5ad",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman\\agents\\openai.yaml": {
+    "mtime": 1779988006.333255,
+    "ast_hash": "756163a23db1b56d60c527c8d7edd43b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-compress\\SKILL.md": {
+    "mtime": 1779988006.3270679,
+    "ast_hash": "5cfd6ee9993c9e72da6404a9841d82fd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman-stats\\SKILL.md": {
+    "mtime": 1779988006.33208,
+    "ast_hash": "e9966f688641209792719474f241a6ef",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\cavecrew\\README.md": {
+    "mtime": 1779988006.3359344,
+    "ast_hash": "8b7ca548bd36b6db39006bac6cd54759",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\cavecrew\\SKILL.md": {
+    "mtime": 1779988006.3359344,
+    "ast_hash": "6ea8150438c6392a5ee0afef0a735ad4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman\\README.md": {
+    "mtime": 1779988006.349765,
+    "ast_hash": "3358f5119f61b24f5fa65a25de7b866b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman\\SKILL.md": {
+    "mtime": 1779988006.35127,
+    "ast_hash": "90e5f9d97791c2080495926731e0f5ad",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-commit\\README.md": {
+    "mtime": 1779988006.3370008,
+    "ast_hash": "2fe1d98cadbd2709a34ee3c77795a143",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-commit\\SKILL.md": {
+    "mtime": 1779988006.3380065,
+    "ast_hash": "e8d814f342ec5752f47866299badd0a7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\README.md": {
+    "mtime": 1779988006.3400702,
+    "ast_hash": "78d3757502badfab9db0e38724d336b3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\SECURITY.md": {
+    "mtime": 1779988006.3400702,
+    "ast_hash": "b2caed82d9d4a58c0530f7e741851224",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-compress\\SKILL.md": {
+    "mtime": 1779988006.3410676,
+    "ast_hash": "5cfd6ee9993c9e72da6404a9841d82fd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-help\\README.md": {
+    "mtime": 1779988006.3447258,
+    "ast_hash": "f49266e99b58d33c1d40b7bf0a644ec3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-help\\SKILL.md": {
+    "mtime": 1779988006.3466885,
+    "ast_hash": "b0168dbcf14c8d3cd29101e1eb66de12",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-review\\README.md": {
+    "mtime": 1779988006.3476975,
+    "ast_hash": "9777a26704850f1e091ab072f02fa10f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-review\\SKILL.md": {
+    "mtime": 1779988006.3476975,
+    "ast_hash": "0e038c50a6bfdc9b8a307e6316c07236",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-stats\\README.md": {
+    "mtime": 1779988006.3486955,
+    "ast_hash": "866dc96f332b4e2bc1f80fec878fea52",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\skills\\caveman-stats\\SKILL.md": {
+    "mtime": 1779988006.349765,
+    "ast_hash": "e9966f688641209792719474f241a6ef",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\hooks\\README.md": {
+    "mtime": 1779988006.351782,
+    "ast_hash": "0ffc4cd7cd132cd8645123b8b3d294ed",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\mcp-servers\\caveman-shrink\\README.md": {
+    "mtime": 1779988006.3592744,
+    "ast_hash": "0d82c2d142ce315b8e53afb5e02d8846",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\README.md": {
+    "mtime": 1779988006.3617792,
+    "ast_hash": "31add990b765cb44cd785ae6350f5fb0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\commands\\caveman-commit.md": {
+    "mtime": 1779988006.362785,
+    "ast_hash": "9e8958ccc8e078c8b8d1ae7070069bfe",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\commands\\caveman-help.md": {
+    "mtime": 1779988006.362785,
+    "ast_hash": "1e0fba68bca9ac2696866203803bd1f9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\commands\\caveman-review.md": {
+    "mtime": 1779988006.3637936,
+    "ast_hash": "1f6ef75453572967413b8c7abf5bf80e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\commands\\caveman-stats.md": {
+    "mtime": 1779988006.3637936,
+    "ast_hash": "b64f2a924ce03c7cc398a124b5b33709",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\plugins\\opencode\\commands\\caveman.md": {
+    "mtime": 1779988006.3647926,
+    "ast_hash": "986e689be7b6ebb476233d8092f572ba",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\rules\\caveman-activate.md": {
+    "mtime": 1779988006.3661637,
+    "ast_hash": "842f73fb8944c06f82037e6f2deb28dc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\src\\rules\\caveman-openclaw-bootstrap.md": {
+    "mtime": 1779988006.3671682,
+    "ast_hash": "ff1ddc6b0f942487d73cd70752467fcc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\claude-md-preferences.md": {
+    "mtime": 1779988006.3691816,
+    "ast_hash": "a2bb410635ed296ba1b30ffb10f84dbe",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\claude-md-preferences.original.md": {
+    "mtime": 1779988006.3691816,
+    "ast_hash": "ef7c5b56b7fdb75b15235e998a7e744e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\claude-md-project.md": {
+    "mtime": 1779988006.3691816,
+    "ast_hash": "2771a4d9446aa8b27b409d7f91419d51",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\claude-md-project.original.md": {
+    "mtime": 1779988006.3705964,
+    "ast_hash": "4cc90597567f4a463d26c0d16ccdbfe0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\mixed-with-code.md": {
+    "mtime": 1779988006.3711028,
+    "ast_hash": "e727a76b79a87164782c914a505776ae",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\mixed-with-code.original.md": {
+    "mtime": 1779988006.3711028,
+    "ast_hash": "d081b017c5f795993f72e04ed99d35ae",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\project-notes.md": {
+    "mtime": 1779988006.3721092,
+    "ast_hash": "15101d44f9db03298ea90ae73f0cc769",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\project-notes.original.md": {
+    "mtime": 1779988006.3721092,
+    "ast_hash": "0353ad910d160db75a74aed4eb6631e6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\todo-list.md": {
+    "mtime": 1779988006.3736935,
+    "ast_hash": "0513f74e495fa4a013bd69d1f5b54e8d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\tests\\caveman-compress\\todo-list.original.md": {
+    "mtime": 1779988006.3736935,
+    "ast_hash": "298cd528d5ea0b1af038074e2159f874",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\AGENTS.md": {
+    "mtime": 1778549610.2121615,
+    "ast_hash": "9e09241799026ac05be315a2f0b50055",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\CLAUDE.md": {
+    "mtime": 1778549610.2126842,
+    "ast_hash": "5c27369b226fcf2be8a6cfe52224e767",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\README.md": {
+    "mtime": 1787427153.858897,
+    "ast_hash": "79469a9e11f38142ab41fbeece5ed17f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\docs\\assets\\dancing-rock-32.png": {
+    "mtime": 1779988006.3095005,
+    "ast_hash": "f89c978f5ba2e36eb99911f8517888c9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\docs\\assets\\dancing-rock.svg": {
+    "mtime": 1779988006.3110056,
+    "ast_hash": "aa048db178138ee04e58211c20ef3013",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\assets\\caveman-small.svg": {
+    "mtime": 1779988006.3230276,
+    "ast_hash": "6dc2ad37a1464bdacce5e1521dc24f49",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\assets\\caveman.svg": {
+    "mtime": 1779988006.3244784,
+    "ast_hash": "aa040c7fb59a5b7a3ca3be6f0b439c72",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman\\assets\\caveman-small.svg": {
+    "mtime": 1779988006.3344283,
+    "ast_hash": "6dc2ad37a1464bdacce5e1521dc24f49",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\caveman\\plugins\\caveman\\skills\\caveman\\assets\\caveman.svg": {
+    "mtime": 1779988006.3344283,
+    "ast_hash": "aa040c7fb59a5b7a3ca3be6f0b439c72",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\public\\file.svg": {
+    "mtime": 1778549548.0165944,
+    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\public\\globe.svg": {
+    "mtime": 1778549548.0307162,
+    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\public\\next.svg": {
+    "mtime": 1778549548.047802,
+    "ast_hash": "8e061864f388b47f33a1c3780831193e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\public\\vercel.svg": {
+    "mtime": 1778549548.062605,
+    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\public\\window.svg": {
+    "mtime": 1778549548.0763667,
+    "ast_hash": "a2760511c65806022ad20adf74370ff3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.opencode\\package.json": {
+    "mtime": 1779997991.442792,
+    "ast_hash": "878115d31c721840fc3330b89a3f8c20",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\distribuir_gema.ps1": {
+    "mtime": 1780016358.8944619,
+    "ast_hash": "1484e9bfefa407cf3dfc0cd275a22e29",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\run_gema.ps1": {
+    "mtime": 1787427199.377416,
+    "ast_hash": "4eef652f90d6f245ff5959345a853427",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\dialogue.py": {
+    "mtime": 1780015639.286626,
+    "ast_hash": "84c082a0ad0237f0aeb35286525338d0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\base_refiner.py": {
+    "mtime": 1780015192.8054292,
+    "ast_hash": "45c63c38c3fa06aadc2f997d1717c7df",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\dialogue_contracts.py": {
+    "mtime": 1787426636.009925,
+    "ast_hash": "9d735f61a39899ff745359786e702152",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\dialogue_formatter.py": {
+    "mtime": 1780015634.686042,
+    "ast_hash": "fdd0bd3d204b3a4e9acebcea709130ed",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\lexical_cleaner.py": {
+    "mtime": 1780015485.975096,
+    "ast_hash": "5b209f863b0cd248f31d4dc7bb08397d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\ollama_dialogue.py": {
+    "mtime": 1780015631.9417944,
+    "ast_hash": "fd226d7b876b6f1f31da9e118f155ba2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\refinement_pipeline.py": {
+    "mtime": 1780015198.8745403,
+    "ast_hash": "cebef5e11b470d1c2ae52453c99c3c4f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\nlp\\semantic_refiner.py": {
+    "mtime": 1780015240.754841,
+    "ast_hash": "c0fc5924e606cdb8c43f1e9cb763f834",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\tests\\test_dialogue_engine.py": {
+    "mtime": 1787426642.859416,
+    "ast_hash": "f94c076f384ca559999b8be28828d12e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\RefinementStepper.tsx": {
+    "mtime": 1780015453.3459623,
+    "ast_hash": "1d41e02134f7cc2540dcc8d925b24b99",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Editor\\BubbleMenu.tsx": {
+    "mtime": 1780031038.797337,
+    "ast_hash": "fe42eed70c93ba3ad3b3be5e56537785",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\AIChangeFeed.tsx": {
+    "mtime": 1780019588.2466786,
+    "ast_hash": "c0c977265804e03ed2dd9880415d99ee",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\ChapterExplorer.tsx": {
+    "mtime": 1780041242.0559313,
+    "ast_hash": "67a7c2dedf99da88091411fe5c7e3ab7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\LiveTranscriptionBuffer.tsx": {
+    "mtime": 1780016299.8039894,
+    "ast_hash": "daf4f3cb71da63191e8345528d64b5eb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\Panel1.tsx": {
+    "mtime": 1780038294.077179,
+    "ast_hash": "31ad7d85b906f41bae1e0bab7b28e38f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\Panel3.tsx": {
+    "mtime": 1780038527.0378673,
+    "ast_hash": "a6aba141948a191c3357744df4aec5d8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\QuickControlCenter.tsx": {
+    "mtime": 1780041217.027309,
+    "ast_hash": "2390fd127b988992f33224c6cd8446ec",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\SystemMetricsContainer.tsx": {
+    "mtime": 1780037371.4239442,
+    "ast_hash": "efb6b4fa9a1f94a87ea7b08bfb025e99",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\hooks\\useAutoSave.ts": {
+    "mtime": 1780040121.7614462,
+    "ast_hash": "0788068ac2bbdb4f590ae6aef01fe5bc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\editor\\commands\\useDialogueTransform.ts": {
+    "mtime": 1780020473.7483945,
+    "ast_hash": "66fef3b5e0d7cf46ad0b1657e6d12e17",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\storage\\LocalPersistenceService.ts": {
+    "mtime": 1780040465.0459328,
+    "ast_hash": "b615e28e8ea50900c5f7c30b7514c44e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\layouts\\TriplePanelLayout.tsx": {
+    "mtime": 1780016157.709434,
+    "ast_hash": "a02560a319fa4537d3c4f43f3a5a16e3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\store\\useInferenceStore.ts": {
+    "mtime": 1780036967.039856,
+    "ast_hash": "f79e27926fc9b3b065ba002bfb9f1910",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\store\\useProjectStore.ts": {
+    "mtime": 1787426582.4657972,
+    "ast_hash": "62599b0d7c33500d3709981fdc5f1f1c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\export.py": {
+    "mtime": 1780019945.2523098,
+    "ast_hash": "5d7783638b16787e4b434051d705ebaf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\endpoints\\history.py": {
+    "mtime": 1780025631.248027,
+    "ast_hash": "b2867751beea465e8804f8add8d1fc84",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\websocket\\manager.py": {
+    "mtime": 1780021510.4381113,
+    "ast_hash": "c419982a00500ddb2c358efbdb64fa0e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\websocket\\__init__.py": {
+    "mtime": 1780021508.4050708,
+    "ast_hash": "87c40e33e1686ecc2cd31ba937ae44d0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\analytics\\contracts.py": {
+    "mtime": 1780021261.2259502,
+    "ast_hash": "593d529643902f3aa6fc0f8e33a6d6a4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\analytics\\factory.py": {
+    "mtime": 1780021274.2893126,
+    "ast_hash": "94c142431e30515564f16ee719bb4593",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\analytics\\processors.py": {
+    "mtime": 1780021271.881976,
+    "ast_hash": "8bf2cc8c994a6b00ce68ef02ceb9337e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\analytics\\__init__.py": {
+    "mtime": 1780021259.1814873,
+    "ast_hash": "faf9d77baadc5e637b144cee25acbf81",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\export\\contracts.py": {
+    "mtime": 1780019908.4651182,
+    "ast_hash": "4816738cb1f6aa686d9106f5008b5608",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\export\\docx_rae_exporter.py": {
+    "mtime": 1780019932.3604035,
+    "ast_hash": "de2c7d48928f1f9cfa21e80ab6c173d1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\export\\metadata_extractor.py": {
+    "mtime": 1780019909.3801517,
+    "ast_hash": "109866e6b5582e8ca19c4fecd09cd292",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\export\\__init__.py": {
+    "mtime": 1780019930.3243887,
+    "ast_hash": "a2b126a884d3e4387b5e55cc0938a15a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\history\\models.py": {
+    "mtime": 1780020620.5351248,
+    "ast_hash": "6188d053933b2d34bd864a5dfff61f7a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\history\\orchestrator.py": {
+    "mtime": 1780020635.8339808,
+    "ast_hash": "89091d8d4d75c1332a64088033423315",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\history\\repositories.py": {
+    "mtime": 1780020634.8918183,
+    "ast_hash": "5bd2b81bf709ed50cc01cf6e79d99a12",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\services\\history\\__init__.py": {
+    "mtime": 1780020618.50395,
+    "ast_hash": "c409795b023ff98665547c9e97053a2d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Editor\\Toolbar.tsx": {
+    "mtime": 1780036976.9738948,
+    "ast_hash": "4d4278e04a7f5f2ddfa0c6b68375f609",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\ExportController.tsx": {
+    "mtime": 1780020046.482669,
+    "ast_hash": "f9ca1b08b5ee5e695081700501425d10",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\ManuscriptAnalyticsGrid.tsx": {
+    "mtime": 1780020024.0693755,
+    "ast_hash": "f1c76ec79240a81685b4326bed0807f2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\components\\Panels\\Panel3Header.tsx": {
+    "mtime": 1780038855.42362,
+    "ast_hash": "f2bcf1c7bd05473a143058b7e3be59c0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\hooks\\useManuscriptAnalytics.ts": {
+    "mtime": 1780020022.0470219,
+    "ast_hash": "5f39c1f401fc6b726feea9d1f401ef3b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\editor\\Shortcuts.ts": {
+    "mtime": 1780021132.0947244,
+    "ast_hash": "a910d80ddae1e6cdf7b0e3c2d62225f9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\infrastructure\\editor\\VoiceCommandHandler.ts": {
+    "mtime": 1780019516.5789783,
+    "ast_hash": "70a4346dd7d9f9c53b7ee7bf71adfd9b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\api\\v1\\websocket\\stream.py": {
+    "mtime": 1780030280.9249325,
+    "ast_hash": "0d3a12029db90afdd9664912709cc27d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\hooks\\useAudioUpload.ts": {
+    "mtime": 1780041734.07563,
+    "ast_hash": "f48c89be0bcf2e73b14012d42d273b64",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\frontend\\src\\types\\html-to-docx.d.ts": {
+    "mtime": 1780030973.9744635,
+    "ast_hash": "8d7b4a82a7218661a23d81e8743da845",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\run_gema.sh": {
+    "mtime": 1787427205.7187958,
+    "ast_hash": "f09e5f46eda5f27d7b47ca48d5f58e8a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\CHANGELOG.md": {
+    "mtime": 1787427177.579106,
+    "ast_hash": "3cbecd557811e97f555243d14f8ceebc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\CONTRIBUTING.md": {
+    "mtime": 1787427171.9783258,
+    "ast_hash": "dafc1f6562874db6a545559680d64d57",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\docker-compose.yml": {
+    "mtime": 1787427212.8364792,
+    "ast_hash": "87249949453fce033c5a7b201d81808b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\README.md": {
+    "mtime": 1787427100.4119143,
+    "ast_hash": "2f1bd97fbcd7e6cd2b1460df871b6418",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\.github\\workflows\\ci.yml": {
+    "mtime": 1787427230.7682395,
+    "ast_hash": "19982437c58deb860705a1b34cb8fa61",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\backend\\README.md": {
+    "mtime": 1787427159.7064338,
+    "ast_hash": "0770992d2a07f2bb265c9c1b65e1ad83",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\docs\\API_REFERENCE.md": {
+    "mtime": 1787427140.1711364,
+    "ast_hash": "ccd1047e00993cfd6383fb4a4debaef4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\docs\\ARCHITECTURE.md": {
+    "mtime": 1787427127.9901838,
+    "ast_hash": "81bc8cacd5febaec6992d0602891ddc1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\docs\\DEVELOPMENT_GUIDE.md": {
+    "mtime": 1787427147.584528,
+    "ast_hash": "cb816d8ad2c6790ba3ef40cc3737ba19",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Sebastian Macias\\Documents\\0. Programacion\\Grabadora_para_Escritores\\docs\\MANUAL_USUARIO.md": {
+    "mtime": 1787427113.7634716,
+    "ast_hash": "6c349ebba78d903249cb492661b14c6e",
+    "semantic_hash": ""
+  }
+}

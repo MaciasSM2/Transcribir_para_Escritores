@@ -36,7 +36,7 @@ def fix_database_tildes():
 
 def patch_vosk_worker():
     """Corrige C1: Evita el error silencioso de importación."""
-    worker_path = os.path.join(BACKEND_DIR, "services", "vosk_worker.py")
+    worker_path = os.path.join(BACKEND_DIR, "services", "transcription", "vosk_worker.py")
     if not os.path.exists(worker_path):
         print("[AVISO] No se encontro vosk_worker.py. Saltando...")
         return

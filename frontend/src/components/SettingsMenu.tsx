@@ -8,21 +8,49 @@ import { useUIStore } from '@/store/useUIStore';
 import { Settings, X, Upload, History, BookOpen, FileText, File, FileInput, Download } from 'lucide-react';
 // mammoth se carga de forma dinámica solo cuando se necesita (ver handlers de .docx)
 import { API_BASE } from '@/lib/api';
+import { secureRequest } from '@/lib/api-client';
 import { exportService } from '@/infrastructure/export/ExportService';
 
 export default function SettingsMenu() {
   const { isSettingsOpen, settingsActiveTab, openSettings, closeSettings, setSettingsTab, setCurrentView } = useUIStore();
   
-  const { toneName, referenceText, setTone } = useToneStore();
+  const { toneName, referenceText, setTone, outputFormat, setOutputFormat, fetchTones } = useToneStore();
   const { jobs, addJob, savedDocs, fetchHistory, fetchSavedDocs, isLoading } = useHistoryStore();
-  const { documentText, setDocumentText, resetStore, setProcessingAudio } = useDictationStore();
+  const { documentText, setDocumentText, resetStore, setProcessingAudio, isWhisperMode: whisperMode, setWhisperMode } = useDictationStore();
+
+  // Tonos disponibles: se cargan del backend, con fallback a los 4 predefinidos
+  const [availableTones, setAvailableTones] = useState<{ value: string; label: string }[]>([
+    { value: 'Narrativa de Ciencia Ficción y Fantasía Épica', label: 'Fantasía / Ciencia Ficción' },
+    { value: 'Romance Contemporáneo',                        label: 'Romance Contemporáneo' },
+    { value: 'Misterio y Thriller',                          label: 'Misterio y Thriller' },
+    { value: 'No Ficción Académica',                         label: 'No Ficción Académica' },
+  ]);
 
   useEffect(() => {
     if (isSettingsOpen && settingsActiveTab === 'history') {
       fetchHistory();
       fetchSavedDocs();
     }
-  }, [isSettingsOpen, settingsActiveTab, fetchHistory, fetchSavedDocs]);
+    if (isSettingsOpen && settingsActiveTab === 'tone') {
+      // Cargar tonos del backend y enriquecer el select si hay tonos adicionales
+      fetchTones().then(() => {
+        fetch(`${API_BASE}/tones/`)
+          .then(r => r.ok ? r.json() : null)
+          .then(data => {
+            if (data && typeof data === 'object') {
+              const backendTones = Object.keys(data).map(key => ({
+                value: key,
+                label: key,
+              }));
+              if (backendTones.length > 0) {
+                setAvailableTones(backendTones);
+              }
+            }
+          })
+          .catch(() => { /* fallback: mantiene los 4 predefinidos */ });
+      });
+    }
+  }, [isSettingsOpen, settingsActiveTab, fetchHistory, fetchSavedDocs, fetchTones]);
 
   const [isUploading, setIsUploading] = useState(false);
   // Separado de isUploading: el archivo ya se subió pero el servidor sigue procesando
@@ -105,19 +133,15 @@ export default function SettingsMenu() {
       if (pollingCancelledRef.current) return;
 
       try {
-        const res = await fetch(`${API_BASE}/api/transcribe/status/${jobId}`);
+        const res = await fetch(`${API_BASE}/audio/status/${jobId}`);
         if (!res.ok) throw new Error(`Error consultando estado: HTTP ${res.status}`);
 
         const data = await res.json();
 
         if (data.status === 'completed') {
-          // STALE CLOSURE FIX: Leemos el texto MÁS RECIENTE del store en el momento
-          // exacto de la resolución, no el valor capturado al inicio del polling.
-          // Esto evita sobrescribir lo que el usuario escribió mientras esperaba.
-          const currentText = useDictationStore.getState().documentText;
-          const newText = (currentText ? currentText + '\n\n' : '') + data.transcription;
-
-          setDocumentText(newText);
+          // Inyectar en Tiptap a través de setLastDictatedChunk para reflejarlo en el lienzo
+          useDictationStore.getState().setLastDictatedChunk(data.transcription);
+          
           addJob({
             id: jobId,
             filename,
@@ -163,11 +187,26 @@ export default function SettingsMenu() {
     setProcessingAudio(true); // Bloquea el lienzo desde el primer momento
 
     try {
+      // ── Health Check: verificar CPU/RAM antes de tarea pesada ──────────────
+      // secureRequest ejecuta GET /system/health/hardware y lanza excepción
+      // si el sistema está saturado, protegiendo la transcripción de OOM.
+      try {
+        await secureRequest('/audio/upload', { method: 'HEAD' }, true);
+      } catch (healthErr) {
+        const msg = healthErr instanceof Error ? healthErr.message : '';
+        if (msg.startsWith('SISTEMA_SATURADO')) {
+          throw new Error(msg.replace('SISTEMA_SATURADO: ', ''));
+        }
+        // Otros errores del health check los ignoramos (HEAD no es ruta real)
+      }
       const formData = new FormData();
       formData.append('file', file);
+      formData.append('whisper_mode', whisperMode ? 'true' : 'false');
+      formData.append('tone_name', toneName);
+      formData.append('format_type', outputFormat);
 
       // Enviamos el audio — el backend responde 202 Accepted inmediatamente
-      const response = await fetch(`${API_BASE}/api/transcribe/file`, {
+      const response = await fetch(`${API_BASE}/audio/upload`, {
         method: 'POST',
         body: formData,
       });
@@ -199,7 +238,7 @@ export default function SettingsMenu() {
 
   const handleActionSavedDoc = async (id: string, action: 'download-txt' | 'download-docx' | 'edit' | 'reprocess', title: string) => {
     try {
-      const res = await fetch(`${API_BASE}/api/history/read/${id}`);
+      const res = await fetch(`${API_BASE}/docs/read/${id}`);
       if (res.ok) {
         const data = await res.json();
         const text = data.text;
@@ -304,14 +343,41 @@ export default function SettingsMenu() {
                       onChange={handleToneNameChange}
                       className="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200"
                     >
-                      <option value="Narrativa de Ciencia Ficción y Fantasía Épica">Fantasía / Ciencia Ficción</option>
-                      <option value="Romance Contemporáneo">Romance Contemporáneo</option>
-                      <option value="Misterio y Thriller">Misterio y Thriller</option>
-                      <option value="No Ficción Académica">No Ficción Académica</option>
+                      {availableTones.map(({ value, label }) => (
+                        <option key={value} value={value}>{label}</option>
+                      ))}
                     </select>
                   </div>
                   
-                  <div>
+                  <div className="mt-2 space-y-4">
+                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Formato de Salida
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        onClick={() => setOutputFormat('novel')}
+                        className={`p-3 rounded-lg border text-sm transition-all ${
+                          outputFormat === 'novel' 
+                            ? 'border-blue-600 bg-blue-50 text-blue-700 ring-2 ring-blue-100' 
+                            : 'border-slate-200 hover:bg-slate-50'
+                        }`}
+                      >
+                        📖 Novela / Narrativo
+                      </button>
+                      <button
+                        onClick={() => setOutputFormat('report')}
+                        className={`p-3 rounded-lg border text-sm transition-all ${
+                          outputFormat === 'report' 
+                            ? 'border-blue-600 bg-blue-50 text-blue-700 ring-2 ring-blue-100' 
+                            : 'border-slate-200 hover:bg-slate-50'
+                        }`}
+                      >
+                        📝 Informe / Formal
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="mt-2">
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Texto de Referencia
                     </label>
@@ -525,6 +591,19 @@ export default function SettingsMenu() {
               )}
             </div>
             
+            {/* Whisper Mode Toggle */}
+            <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg mt-4">
+              <div className="flex flex-col">
+                <span className="text-sm font-bold">Modo Susurro</span>
+                <span className="text-xs text-slate-500">Mejora voces bajas y limpia ruido de calle</span>
+              </div>
+              <button 
+                onClick={() => setWhisperMode(!whisperMode)}
+                className={`w-12 h-6 rounded-full transition-colors ${whisperMode ? 'bg-purple-600' : 'bg-slate-300'}`}
+              >
+                <div className={`w-4 h-4 bg-white rounded-full transition-transform ${whisperMode ? 'translate-x-7' : 'translate-x-1'}`} />
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -2,17 +2,21 @@ import { IDocumentExporter } from './IDocumentExporter';
 import { TxtExportStrategy } from './TxtExportStrategy';
 import { PdfExportStrategy } from './PdfExportStrategy';
 import { DocxExportStrategy } from './DocxExportStrategy';
+import { DocxIntactExportStrategy } from './DocxIntactExportStrategy';
+import { DocxEditorialExportStrategy } from './DocxEditorialExportStrategy';
 
-export type ExportFormat = 'txt' | 'pdf' | 'docx';
+export type ExportFormat = 'txt' | 'pdf' | 'docx' | 'docx_intact' | 'docx_editorial';
 
-export class ExportService {
+class ExportService {
   private strategies: Record<ExportFormat, IDocumentExporter>;
 
   constructor() {
     this.strategies = {
       txt: new TxtExportStrategy(),
       pdf: new PdfExportStrategy(),
-      docx: new DocxExportStrategy()
+      docx: new DocxExportStrategy(),
+      docx_intact: new DocxIntactExportStrategy(),
+      docx_editorial: new DocxEditorialExportStrategy()
     };
   }
 

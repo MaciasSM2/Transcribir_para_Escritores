@@ -1,19 +1,18 @@
-import { API_BASE } from '@/lib/api';
+import { apiRequest } from '@/lib/api';
 
-export interface IDocumentApi {
+interface IDocumentApi {
   saveDocument(text: string, toneName: string): Promise<boolean>;
 }
 
-export class DocumentApiService implements IDocumentApi {
+class DocumentApiService implements IDocumentApi {
   public async saveDocument(text: string, toneName: string): Promise<boolean> {
     if (!text) return false;
     
     try {
       const title = `Documento_${new Date().toLocaleDateString('es-MX').replace(/\//g, '-')}`;
       
-      const response = await fetch(`${API_BASE}/api/history/save`, {
+      const response = await apiRequest('/docs/save', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, tone_name: toneName, title }),
       });
       

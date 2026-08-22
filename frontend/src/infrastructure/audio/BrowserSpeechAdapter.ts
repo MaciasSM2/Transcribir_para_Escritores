@@ -1,168 +1,108 @@
-import { ISpeechTranscriber, SpeechTranscriberEvents } from './ISpeechTranscriber';
-
-// ---------------------------------------------------------------------------
-// Interfaces de la Web Speech API del navegador.
-// No existe un paquete @types/ oficial y estable para estas APIs; definirlas
-// localmente es la práctica correcta para mantener tipado estricto.
-// ---------------------------------------------------------------------------
-
-interface SpeechRecognitionResultItem {
-  readonly transcript: string;
-  readonly confidence: number;
-}
-
-interface SpeechRecognitionResult {
-  readonly isFinal: boolean;
-  readonly length: number;
-  [index: number]: SpeechRecognitionResultItem;
-}
-
-interface SpeechRecognitionResultList {
-  readonly length: number;
-  [index: number]: SpeechRecognitionResult;
-}
-
-interface SpeechRecognitionEvent extends Event {
-  readonly resultIndex: number;
-  readonly results: SpeechRecognitionResultList;
-}
-
-interface SpeechRecognitionErrorEvent extends Event {
-  readonly error: string;
-  readonly message: string;
-}
-
-interface SpeechRecognition extends EventTarget {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  start(): void;
-  stop(): void;
-  onresult: ((ev: SpeechRecognitionEvent) => void) | null;
-  onerror: ((ev: SpeechRecognitionErrorEvent) => void) | null;
-  onend: (() => void) | null;
-}
-
-interface SpeechRecognitionConstructor {
-  new (): SpeechRecognition;
-}
-
-// Extensión del tipo Window para incluir las variantes vendor-prefixed
-interface SpeechRecognitionWindow extends Window {
-  SpeechRecognition?: SpeechRecognitionConstructor;
-  webkitSpeechRecognition?: SpeechRecognitionConstructor;
-}
-
-// ---------------------------------------------------------------------------
+// frontend/src/infrastructure/audio/BrowserSpeechAdapter.ts
+import { ISpeechTranscriber, TranscriptionCallbacks } from './ISpeechTranscriber';
 
 export class BrowserSpeechAdapter implements ISpeechTranscriber {
-  private recognition: SpeechRecognition | null = null;
-  private isRecording: boolean = false;
-  private isManualStop: boolean = true;
-  private events: Partial<SpeechTranscriberEvents> = {};
-  private lang: string;
+  private recognition: any | null = null;
+  private callbacks: TranscriptionCallbacks | null = null;
+  private isRunning: boolean = false;
+  private isIntentionalStop: boolean = false;
+  
+  // Guardamos el índice del último resultado consolidado para calcular deltas puras
+  private lastResultIndex: number = 0;
 
-  constructor(lang: string = 'es-ES') {
-    this.lang = lang;
-  }
-
-  private initRecognition(): boolean {
-    if (typeof window === 'undefined') return false;
-
-    const win = window as SpeechRecognitionWindow;
-    const SpeechRecognitionClass = win.SpeechRecognition ?? win.webkitSpeechRecognition;
-
-    if (!SpeechRecognitionClass) {
-      console.warn('Web Speech API no está soportada en este navegador.');
-      return false;
+  public initialize(callbacks: TranscriptionCallbacks): void {
+    this.callbacks = callbacks;
+    
+    // Verificación de soporte nativo en el agente de usuario
+    const SpeechClass = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechClass) {
+      throw new Error('Web Speech API no es compatible con este navegador.');
     }
 
-    this.recognition = new SpeechRecognitionClass();
-    this.recognition.continuous = true;
-    this.recognition.interimResults = true;
-    this.recognition.lang = this.lang;
-
-    this.recognition.onresult = this.handleResult.bind(this);
-    this.recognition.onerror = this.handleError.bind(this);
-    this.recognition.onend = this.handleEnd.bind(this);
-
-    return true;
+    this.recognition = new SpeechClass();
+    
+    // CONFIGURACIÓN CRÍTICA PARA EVITAR EL DESFASE:
+    this.recognition.continuous = true;      // No se detiene al procesar una frase completa
+    this.recognition.interimResults = true;  // Despacha resultados en tiempo real para previsualización
+    this.recognition.lang = 'es-MX';         // Configuración idiomática regional estándar
+    
+    this.setupEventListeners();
   }
 
-  private handleResult(event: SpeechRecognitionEvent): void {
-    let final = '';
-    let interim = '';
+  private setupEventListeners(): void {
+    if (!this.recognition || !this.callbacks) return;
 
-    for (let i = event.resultIndex; i < event.results.length; ++i) {
-      if (event.results[i].isFinal) final += event.results[i][0].transcript;
-      else interim += event.results[i][0].transcript;
-    }
+    this.recognition.onresult = (event: any) => {
+      let interimTranscript = '';
+      let deltaTranscript = '';
 
-    // El espacio extra asegura que las frases no se peguen
-    if (final && this.events.onFinalResult) this.events.onFinalResult(final + ' ');
-    if (this.events.onInterimResult) this.events.onInterimResult(interim);
-  }
-
-  private handleError(event: SpeechRecognitionErrorEvent): void {
-    if (this.events.onError) this.events.onError(event.error);
-    if (event.error === 'not-allowed') this.updateStatus(false);
-  }
-
-  private handleEnd(): void {
-    // Auto-reinicio solo si: el usuario NO ha pulsado Parar (isManualStop=false)
-    // Y el estado interno confirma que seguimos en sesión activa (isRecording=true).
-    // La doble guarda evita reinicios fantasma de eventos 'end' retrasados que
-    // llegan después de que stop() ya había actualizado el estado.
-    if (!this.isManualStop && this.isRecording) {
-      try {
-        this.recognition?.start();
-      } catch (e) {
-        console.warn('Error al auto-reiniciar el reconocimiento', e);
-        this.updateStatus(false);
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        const result = event.results[i];
+        if (result.isFinal) {
+          // Extraemos la delta consolidada sin tocar la historia anterior
+          deltaTranscript += result[0].transcript;
+          // Actualizamos nuestro puntero de control de segmentación
+          this.lastResultIndex = i + 1;
+        } else {
+          interimTranscript += result[0].transcript;
+        }
       }
-    } else {
-      this.updateStatus(false);
-    }
-  }
 
-  private updateStatus(status: boolean): void {
-    this.isRecording = status;
-    if (this.events.onStatusChange) this.events.onStatusChange(status);
-  }
+      // Despachamos los resultados a través de los canales correspondientes
+      if (deltaTranscript.length > 0 && this.callbacks) {
+        this.callbacks.onDeltaResult(this.sanitizeChunk(deltaTranscript));
+      }
+      if (this.callbacks) {
+        this.callbacks.onInterimResult(interimTranscript);
+      }
+    };
 
-  public subscribe(events: Partial<SpeechTranscriberEvents>): void {
-    this.events = events;
-  }
+    this.recognition.onerror = (event: any) => {
+      if (event.error === 'no-speech') return; // Mitigación silenciosa de pausas largas
+      if (this.callbacks) this.callbacks.onError(`Speech Error: ${event.error}`);
+    };
 
-  public unsubscribe(): void {
-    this.events = {};
+    this.recognition.onend = () => {
+      // MECANISMO DE DOBLE GUARDIA: Si el navegador apaga el micro por inactividad
+      // pero el escritor no ha presionado "Stop", reanudamos instantáneamente.
+      if (!this.isIntentionalStop && this.isRunning) {
+        setTimeout(() => {
+          try {
+            this.recognition.start();
+          } catch (e) {
+            // Protección contra intentos de doble inicio síncronos
+          }
+        }, 80); // Microsegundos de delay seguros para liberar la tarjeta de sonido
+      } else {
+        this.isRunning = false;
+        if (this.callbacks) this.callbacks.onDisconnect();
+      }
+    };
   }
 
   public start(): void {
-    this.isManualStop = false;
-
-    if (!this.recognition) {
-      const initialized = this.initRecognition();
-      if (!initialized) return; // Navegador no soportado
-    }
-
-    try {
-      this.recognition!.start();
-      this.updateStatus(true);
-    } catch (e) {
-      console.warn('Speech recognition ya está iniciado o falló al iniciar.', e);
-    }
+    if (!this.recognition || this.isRunning) return;
+    this.isRunning = true;
+    this.isIntentionalStop = false;
+    this.lastResultIndex = 0;
+    this.recognition.start();
   }
 
   public stop(): void {
-    this.isManualStop = true;
-    if (!this.recognition) return;
+    if (!this.recognition || !this.isRunning) return;
+    this.isIntentionalStop = true;
+    this.isRunning = false;
+    this.recognition.stop();
+  }
 
-    try {
-      this.recognition.stop();
-      this.updateStatus(false);
-    } catch (e) {
-      console.warn('Error al detener el reconocimiento de voz', e);
-    }
+  public isActive(): boolean {
+    return this.isRunning;
+  }
+
+  /**
+   * Asegura que el fragmento entrante no contenga espacios duplicados en los extremos.
+   */
+  private sanitizeChunk(text: string): string {
+    return text.replace(/\s+/g, ' ');
   }
 }

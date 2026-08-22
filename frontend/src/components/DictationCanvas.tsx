@@ -3,12 +3,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDictationStore } from '@/store/useDictationStore';
 import { useUIStore } from '@/store/useUIStore';
 import { useCleanDictation } from '@/hooks/useCleanDictation';
-import { Mic, MicOff, Square } from 'lucide-react';
+import { useToneStore } from '@/store/useToneStore';
+import { API_BASE } from '@/lib/api';
+import { RefinementStepper } from './RefinementStepper';
+import { Mic, MicOff, Square, Wind, Sparkles } from 'lucide-react';
 
 export default function DictationCanvas() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   
   const { setCurrentView } = useUIStore();
+  const { toneName } = useToneStore();
+  const [refinementStage, setRefinementStage] = useState<'idle' | 'lexical' | 'semantic' | 'completed'>('idle');
   const { 
     unprocessedPhrase, 
     clearUnprocessedPhrase, 
@@ -16,7 +21,9 @@ export default function DictationCanvas() {
     isRecording,
     isProcessingAudio, // Bloqueo global durante transcripción de audio en segundo plano
     documentText,
-    setDocumentText
+    setDocumentText,
+    isWhisperMode,
+    setWhisperMode
   } = useDictationStore();
   const { startRecording, stopRecording, pauseForTyping } = useCleanDictation();
 
@@ -56,9 +63,60 @@ export default function DictationCanvas() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setDocumentText(e.target.value);
+  // 1. Estado local para respuesta inmediata
+  const [localText, setLocalText] = useState(documentText);
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 2. Sincronizar localText cuando el store cambie externamente (ej. por dictado finalizado)
+  useEffect(() => {
+    setLocalText(documentText);
+  }, [documentText]);
+
+  // 3. Función de cambio con Debounce para el Store Global
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const val = e.target.value;
+    setLocalText(val); // Actualización visual inmediata
+
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    
+    // Sincronizamos con el Store Global solo tras 800ms de inactividad
+    debounceRef.current = setTimeout(() => {
+      setDocumentText(val);
+    }, 800);
   };
+
+  const handleRefine = async () => {
+    if (!localText) return;
+    setRefinementStage('lexical');
+    
+    try {
+      const response = await fetch(`${API_BASE}/audio/process-large-text`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ raw_text: localText, tone_name: toneName })
+      });
+      
+      setRefinementStage('semantic');
+      const data = await response.json();
+      
+      setRefinementStage('completed');
+      setDocumentText(data.refined_text || data.text || localText);
+      
+      setTimeout(() => {
+        setRefinementStage('idle');
+      }, 3000);
+    } catch (e) {
+      console.error(e);
+      setRefinementStage('idle');
+    }
+  };
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isRefineDisabled = !mounted || isProcessingAudio || localText.length === 0 || refinementStage !== 'idle';
 
   return (
     <div className="relative flex flex-col h-full bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-4">
@@ -108,6 +166,29 @@ export default function DictationCanvas() {
               <Mic size={18} /> Iniciar Dictado
             </button>
           )}
+          <button
+            onClick={() => setWhisperMode(!isWhisperMode)}
+            disabled={isProcessingAudio}
+            className={`p-2 ml-2 rounded-full border transition-all ${
+              isWhisperMode 
+                ? 'bg-purple-100 border-purple-500 text-purple-600 shadow-[0_0_10px_rgba(168,85,247,0.4)]' 
+                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400'
+            }`}
+            title="Modo Susurro: Mejora voces bajas y filtra ruido de calle"
+          >
+            <Wind size={20} className={isWhisperMode ? 'animate-pulse' : ''} />
+          </button>
+          <button 
+            onClick={handleRefine}
+            disabled={isRefineDisabled}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors font-medium ml-2 ${
+              isRefineDisabled
+                ? 'bg-slate-400 text-slate-200 cursor-not-allowed'
+                : 'bg-blue-100 text-blue-700 hover:bg-blue-200 border border-blue-300'
+            }`}
+          >
+            <Sparkles size={18} /> Refinar
+          </button>
           <button 
             onClick={() => setCurrentView('review')}
             disabled={isProcessingAudio}
@@ -122,12 +203,18 @@ export default function DictationCanvas() {
         </div>
       </div>
 
+      {refinementStage !== 'idle' && (
+        <div className="mb-4">
+          <RefinementStepper stage={refinementStage} />
+        </div>
+      )}
+
       {/* Canvas */}
       <div className="relative flex-grow h-full min-h-[400px]">
         <textarea
           ref={textareaRef}
-          value={documentText}
-          onChange={handleChange}
+          value={localText}
+          onChange={handleTextChange}
           onKeyDown={handleKeyDown}
           disabled={isProcessingAudio}
           className={`w-full h-full p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200 text-lg leading-relaxed focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none font-serif transition-opacity ${
@@ -136,12 +223,19 @@ export default function DictationCanvas() {
           placeholder="Comienza a dictar o escribir aquí tu novela..."
         />
         
-        {/* Interim Text Preview Overlay */}
-        {interimText && (
-          <div className="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm p-3 rounded-md shadow border border-blue-200 dark:border-blue-800 pointer-events-none">
-            <span className="text-blue-500 font-medium italic animate-pulse">
-              {interimText}
-            </span>
+        {/* 💡 OVERLAY DE PREVISUALIZACIÓN (INTERIM UI) */}
+        {isRecording && interimText && (
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 transition-all animate-in fade-in slide-in-from-bottom-4 pointer-events-none">
+            <div className="px-6 py-3 bg-blue-600/90 backdrop-blur-md text-white rounded-full shadow-2xl border border-blue-400/30 flex items-center gap-3">
+              <div className="flex gap-1">
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce"></span>
+              </div>
+              <p className="text-sm font-medium italic opacity-90 truncate max-w-md">
+                "{interimText}..."
+              </p>
+            </div>
           </div>
         )}
       </div>

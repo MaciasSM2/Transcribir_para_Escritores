@@ -6,6 +6,14 @@ import uuid
 def generate_uuid():
     return str(uuid.uuid4())
 
+class UserDNA(Base):
+    __tablename__ = "user_dna"
+    id = Column(Integer, primary_key=True)
+    user_id = Column(String, default="default_user")
+    metrics_json = Column(String)  # Guardamos el diccionario de StylometryEngine
+    vocabulary_json = Column(String) # Palabras favoritas o modismos
+    updated_at = Column(DateTime, default=lambda: datetime.datetime.now(datetime.UTC))
+
 class JobHistory(Base):
     __tablename__ = "job_history"
 

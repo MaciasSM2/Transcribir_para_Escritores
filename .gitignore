@@ -38,9 +38,17 @@ env/
 .DS_Store
 Thumbs.db
 
-# IDEs
+# IDEs and Editors
 .vscode/
 .idea/
+.cursor/
+.windsurf/
+.clinerules/
+.opencode/
+.pytest_cache/
+backend/.pytest_cache/
+backend/graphify-out/
+caveman/
 
 # Debug
 npm-debug.log*
@@ -58,5 +66,4 @@ backend/local_history_vault/
 backend/temp_*
 backend/test_audio.wav
 test_transcribe.py
-backend/test_audio.wav
 backend/temp_converted_test_audio.wav.wav

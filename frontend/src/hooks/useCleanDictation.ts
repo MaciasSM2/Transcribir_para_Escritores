@@ -1,68 +1,59 @@
-import { useEffect, useRef, useCallback } from 'react';
-import { useDictationStore } from '@/store/useDictationStore';
-import { BrowserSpeechAdapter } from '@/infrastructure/audio/BrowserSpeechAdapter';
-import { ISpeechTranscriber } from '@/infrastructure/audio/ISpeechTranscriber';
+// frontend/src/hooks/useCleanDictation.ts
+import { useCallback, useRef, useState, useEffect } from 'react';
+import { BrowserSpeechAdapter } from '../infrastructure/audio/BrowserSpeechAdapter';
+import { useDictationStore } from '../store/useDictationStore';
+import { useInferenceStore } from '../store/useInferenceStore';
 
-export const useCleanDictation = () => {
-  const { setRecording, setInterimText, addUnprocessedPhrase } = useDictationStore();
-  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+export function useCleanDictation() {
+  const adapterRef = useRef<BrowserSpeechAdapter | null>(null);
+  const { setDocumentText, setInterimText } = useDictationStore();
+  const [isRecording, setIsRecording] = useState(false);
 
-  // Usando useRef con inicialización lazy en lugar de un Singleton a nivel de módulo.
-  // El Singleton de módulo sobrevivía al HMR en desarrollo, causando listeners
-  // duplicados y fugas de memoria. Con useRef, el Adapter vive exactamente
-  // mientras el componente que consume este hook está montado.
-  const transcriberRef = useRef<ISpeechTranscriber | null>(null);
-  if (transcriberRef.current === null) {
-    transcriberRef.current = new BrowserSpeechAdapter('es-ES');
-  }
-
+  // Sync state cleanly if store/adapter gets out of sync
   useEffect(() => {
-    const transcriber = transcriberRef.current!;
-    transcriber.subscribe({
-      onFinalResult: (text) => addUnprocessedPhrase(text),
-      onInterimResult: (text) => setInterimText(text),
-      onStatusChange: (status) => setRecording(status),
-      onError: (errorType) => {
-        switch (errorType) {
-          case 'no-speech':
-            // 1. Manejo silencioso: El usuario no ha hablado en el intervalo de escucha.
-            console.warn('🎙️ [useCleanDictation]: No se detectó voz (timeout).');
-            break;
-          case 'audio-capture':
-            console.error('🎙️ [useCleanDictation]: No se encontró un micrófono.');
-            break;
-          case 'not-allowed':
-            console.error('🎙️ [useCleanDictation]: Permisos de micrófono denegados.');
-            break;
-          default:
-            // Para cualquier otro error inesperado, sí usamos console.error
-            console.error(`🎙️ [useCleanDictation] Error no manejado: ${errorType}`);
-        }
+    return () => {
+      if (adapterRef.current) {
+        adapterRef.current.stop();
       }
-    });
-
-    return () => transcriber.unsubscribe();
-  }, [addUnprocessedPhrase, setInterimText, setRecording]);
-
-  const startRecording = useCallback(() => {
-    transcriberRef.current?.start();
+    };
   }, []);
 
-  const stopRecording = useCallback(() => {
-    transcriberRef.current?.stop();
-  }, []);
-
-  const pauseForTyping = useCallback(() => {
-    transcriberRef.current?.stop();
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
+  const startDictation = useCallback(() => {
+    if (!adapterRef.current) {
+      adapterRef.current = new BrowserSpeechAdapter();
+      adapterRef.current.initialize({
+        onDeltaResult: (finalChunk) => {
+          // Fase C: Desacoplamiento. Enviamos el chunk a la tienda.
+          // El lienzo (RichCanvas) lo escuchará e insertará nativamente en Tiptap.
+          useDictationStore.getState().setLastDictatedChunk(finalChunk);
+        },
+        onInterimResult: (interimText) => {
+          // Este texto va a un componente flotante, no altera el lienzo principal
+          setInterimText(interimText);
+          useInferenceStore.getState().setLiveBuffer(interimText);
+        },
+        onError: (err) => console.error(err),
+        onDisconnect: () => {
+          setInterimText('');
+          useInferenceStore.getState().setLiveBuffer('');
+          setIsRecording(false);
+        }
+      });
     }
+    
+    adapterRef.current.start();
+    setIsRecording(true);
+  }, [setDocumentText, setInterimText]);
 
-    // Heurística de negocio: Reanudar dictado automáticamente tras 1.5s sin teclear
-    typingTimeoutRef.current = setTimeout(() => {
-      transcriberRef.current?.start();
-    }, 1500);
-  }, []);
+  const stopDictation = useCallback(() => {
+    adapterRef.current?.stop();
+    setIsRecording(false);
+    setInterimText('');
+  }, [setInterimText]);
 
-  return { startRecording, stopRecording, pauseForTyping };
-};
+  const startRecording = startDictation;
+  const stopRecording = stopDictation;
+  const pauseForTyping = stopDictation;
+
+  return { startDictation, stopDictation, isRecording, startRecording, stopRecording, pauseForTyping };
+}

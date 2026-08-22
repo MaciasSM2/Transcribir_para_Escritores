@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Download, FileText, File as FileIcon, Save, ChevronDown, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useDictationStore } from '@/store/useDictationStore';
 import { useToneStore } from '@/store/useToneStore';
+import { useUIStore } from '@/store/useUIStore';
 import { exportService, ExportFormat } from '@/infrastructure/export/ExportService';
 import { documentApiService } from '@/infrastructure/api/DocumentApiService';
 import SettingsMenu from './SettingsMenu';
@@ -17,9 +18,15 @@ interface Toast {
 export default function TopNavbar() {
   const { documentText, resetStore } = useDictationStore();
   const { toneName } = useToneStore();
+  const { toggleFullscreen, isFullscreen } = useUIStore();
   const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Auto-dismiss toast
   useEffect(() => {
@@ -75,16 +82,27 @@ export default function TopNavbar() {
           <p className="text-[11px] text-slate-400 dark:text-slate-500 font-sans mt-0.5 hidden sm:block">
             Tono:{' '}
             <span className="text-purple-500 dark:text-purple-400 font-medium">
-              {toneName}
+              {mounted ? toneName : ''}
             </span>
           </p>
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Modo Enfoque */}
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 active:scale-95 text-slate-700 dark:text-slate-200 rounded-lg transition-all font-medium shadow-sm text-sm"
+            title="Modo Enfoque (Pantalla Completa)"
+          >
+            <span className="hidden sm:inline">
+              {mounted ? (isFullscreen ? 'Salir de Enfoque' : 'Modo Enfoque') : 'Modo Enfoque'}
+            </span>
+          </button>
+          
           {/* Guardar Nuevo Borrador */}
           <button
             onClick={handleSaveDraft}
-            disabled={!documentText || isSaving}
+            disabled={!mounted || !documentText || isSaving}
             className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 active:scale-95 text-white rounded-lg transition-all font-medium disabled:opacity-40 disabled:cursor-not-allowed shadow-sm text-sm"
             title="Guardar en historial y limpiar lienzo"
           >
@@ -98,7 +116,7 @@ export default function TopNavbar() {
           <div className="relative">
             <button
               onClick={() => setIsExportMenuOpen(!isExportMenuOpen)}
-              disabled={!documentText}
+              disabled={!mounted || !documentText}
               className="flex items-center gap-1.5 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-95 text-slate-700 dark:text-slate-200 rounded-lg transition-all font-medium disabled:opacity-40 disabled:cursor-not-allowed shadow-sm text-sm"
             >
               <Download size={16} />
@@ -133,13 +151,23 @@ export default function TopNavbar() {
                     </div>
                   </button>
                   <button
-                    onClick={() => handleExport('docx')}
+                    onClick={() => handleExport('docx_intact')}
                     className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 text-left text-sm text-slate-700 dark:text-slate-200 transition-colors"
                   >
                     <FileText size={15} className="text-indigo-600 flex-shrink-0" />
                     <div>
-                      <p className="font-medium">Word APA</p>
-                      <p className="text-[10px] text-slate-400">.docx — doble espacio, 12pt</p>
+                      <p className="font-medium">Word Intacto</p>
+                      <p className="text-[10px] text-slate-400">.docx — mantiene visual del lienzo</p>
+                    </div>
+                  </button>
+                  <button
+                    onClick={() => handleExport('docx_editorial')}
+                    className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 text-left text-sm text-slate-700 dark:text-slate-200 transition-colors"
+                  >
+                    <FileText size={15} className="text-purple-600 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">Word Editorial Pro</p>
+                      <p className="text-[10px] text-slate-400">.docx — Times New Roman, dbl espacio</p>
                     </div>
                   </button>
                   <div className="mx-3 border-t border-slate-100 dark:border-slate-700 my-1" />

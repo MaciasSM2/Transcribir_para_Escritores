@@ -32,8 +32,8 @@ LITERARY_DNA = [
     },
     {
         "author_name": "Isaac Asimov",
-        "genre": "Ciencia Ficcion",
-        "tone_name": "Narrativa de Ciencia Ficcion y Fantasia Epica",
+        "genre": "Ciencia Ficción",
+        "tone_name": "Narrativa de Ciencia Ficción y Fantasía Épica",
         "avg_sentence_length": 22.4,
         "adjective_ratio": 0.21,
         "lexical_richness": 0.58,
@@ -43,7 +43,7 @@ LITERARY_DNA = [
     {
         "author_name": "Isabel Allende",
         "genre": "Romance Literario",
-        "tone_name": "Romance Contemporaneo",
+        "tone_name": "Romance Contemporáneo",
         "avg_sentence_length": 24.1,
         "adjective_ratio": 0.34,
         "lexical_richness": 0.52,
@@ -52,8 +52,8 @@ LITERARY_DNA = [
     },
     {
         "author_name": "Umberto Eco",
-        "genre": "Ensayo Academico",
-        "tone_name": "No Ficcion Academica",
+        "genre": "Ensayo Académico",
+        "tone_name": "No Ficción Académica",
         "avg_sentence_length": 38.7,
         "adjective_ratio": 0.28,
         "lexical_richness": 0.72,
@@ -95,8 +95,8 @@ STYLE_PROFILES = [
         }),
     },
     {
-        "tone_name": "Narrativa de Ciencia Ficcion y Fantasia Epica",
-        "style_display_name": "Ciencia Ficcion / Fantasia Epica",
+        "tone_name": "Narrativa de Ciencia Ficción y Fantasía Épica",
+        "style_display_name": "Ciencia Ficción / Fantasía Épica",
         "reference_author": "Isaac Asimov",
         "avg_sentence_len": 22,
         "max_sentence_len": 45,
@@ -121,8 +121,8 @@ STYLE_PROFILES = [
         }),
     },
     {
-        "tone_name": "Romance Contemporaneo",
-        "style_display_name": "Romance Contemporaneo",
+        "tone_name": "Romance Contemporáneo",
+        "style_display_name": "Romance Contemporáneo",
         "reference_author": "Isabel Allende",
         "avg_sentence_len": 24,
         "max_sentence_len": 50,
@@ -145,8 +145,8 @@ STYLE_PROFILES = [
         }),
     },
     {
-        "tone_name": "No Ficcion Academica",
-        "style_display_name": "Ensayo Academico / No Ficcion",
+        "tone_name": "No Ficción Académica",
+        "style_display_name": "Ensayo Académico / No Ficción",
         "reference_author": "Umberto Eco",
         "avg_sentence_len": 35,
         "max_sentence_len": 70,

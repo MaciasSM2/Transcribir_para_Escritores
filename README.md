@@ -186,8 +186,8 @@ El script verificará dependencias, iniciará el backend en `http://localhost:80
 
 #### 1. Clonar el Repositorio
 ```bash
-git clone https://github.com/MaciasSM2/Grabadora_para_Escritores.git
-cd Grabadora_para_Escritores
+git clone https://github.com/MaciasSM2/Transcribir_para_Escritores.git
+cd Transcribir_para_Escritores
 ```
 
 #### 2. Configurar e Iniciar Backend

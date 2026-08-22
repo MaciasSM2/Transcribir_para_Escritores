@@ -27,8 +27,8 @@ Esta guía está dirigida a desarrolladores y contribuidores que deseen extender
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/MaciasSM2/Grabadora_para_Escritores.git
-cd Grabadora_para_Escritores
+git clone https://github.com/MaciasSM2/Transcribir_para_Escritores.git
+cd Transcribir_para_Escritores
 
 # 2. Configurar Backend (Python)
 cd backend
